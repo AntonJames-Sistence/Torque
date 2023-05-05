@@ -1,13 +1,13 @@
 Description:
 
-Feel adrenaline running through your veins! Will you become a new street racing champion? Drive fast, and beat your opponents!
+Buckle up, step on the gas, and let the adrenaline flow as you strive to become the ultimate street racing champion!
 
 Core features:
 
 1. Drive a car
 2. Dodge other cars, to improve score
 3. Collect items such as (lives, coins)
-4. Different types of opponents cars
+4. Different types of opponents cars, collision detection
 
 Additional:
 
@@ -22,6 +22,8 @@ Future features:
 3. Add more items to collect,
 4. Add new levels
 5. Add more design
+
+[Layout:](layout.png)
 
 Technologies:
 
