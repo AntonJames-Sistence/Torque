@@ -1,65 +1,20 @@
 class PlayerCar {
-    constructor() { 
+    constructor(screen, context) { 
         const playerCarImg = new Image();
         playerCarImg.src = "resources/playerCarImage.png";
         this.carImg = playerCarImg;
         this.carX = 320;
         this.carY = 600;
+        this.width = 55;
+        this.height = 90;
+        this.context = context;
+        this.screen = screen;
     }
 
-    // eventually I would need to calibrate moving mechanics to look better on canvas size
-    moveRight(screen, ctx, distance){
-        // clear canvas before next frame
-        ctx.clearRect(0, 0, screen.width, screen.height);
-        // update position to the right
-        
-        // draw player car if it is inside canvas borders
-        if (this.carX < screen.width-100) { // return here to calibrate later
-            this.carX += distance;
-            ctx.drawImage(this.carImg, this.carX, this.carY, 55, 90);
-        } else {
-            ctx.drawImage(this.carImg, 645, this.carY, 55, 90);
-        }
+    // simple reDraw
+    drive(){
+        this.context.drawImage(this.carImg, this.carX, this.carY, this.width, this.height);
     }
-
-    moveLeft(screen, ctx, distance){
-        ctx.clearRect(0, 0, screen.width, screen.height);
-
-        if (this.carX >= 10) {
-            this.carX -= distance;
-            ctx.drawImage(this.carImg, this.carX, this.carY, 55, 90);
-        } else {
-            ctx.drawImage(this.carImg, 0, this.carY, 55, 90);
-        }
-        
-    }
-
-    moveUp(screen, ctx, distance){
-        ctx.clearRect(0, 0, screen.width, screen.height);
-
-        if (this.carY > 0) {
-            this.carY -= distance;
-            ctx.drawImage(this.carImg, this.carX, this.carY, 55, 90);
-        } else {
-            ctx.drawImage(this.carImg, this.carX, this.carY, 55, 90);
-        }
-        
-    }
-
-    moveDown(screen, ctx, distance){
-        ctx.clearRect(0, 0, screen.width, screen.height);
-
-        if (this.carY < 600) {
-            this.carY += distance;
-            ctx.drawImage(this.carImg, this.carX, this.carY, 55, 90);
-        } else {
-            ctx.drawImage(this.carImg, this.carX, this.carY, 55, 90);
-        }
-        
-    }
-
-
-
 
 }
 
