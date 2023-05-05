@@ -10,6 +10,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // creating player car
     const playerCar = new PlayerCar();
+    // prevent classic bug when we call drawImage before loading img and loading players car
+    playerCar.carImg.addEventListener(
+        "load",
+        () => {
+            ctx.drawImage(playerCar.carImg, playerCar.carX, playerCar.carY, 55, 90);
+        }
+    );
+
+
     
     // creating starting position for players car
     // let startingPos = [0, 600];
@@ -28,5 +37,17 @@ document.addEventListener('DOMContentLoaded', () => {
     //     requestAnimationFrame(() => runAnimation(car));
     // }
     // runAnimation(playerCar);
+    // debugger
+    
+
+    document.addEventListener(
+        "keydown",
+        function(event){
+            if (event.code === "ArrowRight") {
+                // debugger
+                playerCar.moveRight(screen, ctx, 50);
+            }
+        }
+    );
 
 })
