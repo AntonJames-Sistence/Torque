@@ -1,15 +1,15 @@
-class Example {
-    constructor(htmlEle) {
-        this.htmlEle = htmlEle,
-        this.htmlEle.innerHTML = "<h1>It's alive!</h1>",
+// class Example {
+//     constructor(htmlEle) {
+//         this.htmlEle = htmlEle,
+//         this.htmlEle.innerHTML = "<h1>It's alive!</h1>",
 
-        this.handleClick = this.handleClick.bind(this);
-        this.htmlEle.addEventListener('click', this.handleClick);
-    }
+//         this.handleClick = this.handleClick.bind(this);
+//         this.htmlEle.addEventListener('click', this.handleClick);
+//     }
 
-    handleClick() {
-        this.htmlEle.children[0].innerText = "OiOi"
-    }
-}
+//     handleClick() {
+//         this.htmlEle.children[0].innerText = "OiOi"
+//     }
+// }
 
-export default Example;
+// export default Example;

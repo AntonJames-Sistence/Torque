@@ -6,6 +6,8 @@
   padding: 20px;
 }
 
-#main {
-  color: purple;
+canvas {
+  border-radius: 5%;
+  background-color: rgba(0, 128, 0, 0.513);
+  border: 5px solid black;
 }
