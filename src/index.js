@@ -2,26 +2,36 @@ import Player from './scripts/playerCar';
 import Competitor from './scripts/competitor';
 
 document.addEventListener('DOMContentLoaded', () => {
+    // get stats canvas
+    const statsScreen = document.getElementById('stats');
+    const statsCtx = statsScreen.getContext("2d");
 
-    // getiing canvas
-    const screen = document.getElementById('screen');
-    const context = screen.getContext("2d");
+    // updating game stats
+    function updateStats(){
+        statsCtx.font = "20px Arial";
+        // statsCtx.textStyle = "red";
+        statsCtx.fillText(`Current game speed: ${gameSpeed}`, 10, 30);
+    }
+
+    // get main game canvas
+    const gameScreen = document.getElementById('screen');
+    const gameCtx = gameScreen.getContext("2d");
 
     // creating player car
-    const playerCar = new Player(screen, context);
+    const playerCar = new Player(gameScreen, gameCtx);
 
     // creating competitors cars 5 with random positions
 
     const competitors = [];
     for (let i = 0; i < 5; i++){ // maybe refactor inside for loop for collision logic
-        competitors.push(new Competitor(screen, context));
+        competitors.push(new Competitor(gameScreen, gameCtx));
     }
 
     // set up gameSpeed parameter
-    let gameSpeed = 1;
+    let gameSpeed = 0;
 
     // increasing gameSpeed by setting up interval
-    setInterval(() => {if(gameSpeed < 10) gameSpeed += 1}, 1000);
+    setInterval(() => {if(gameSpeed < 10) gameSpeed += 1}, 5000);
 
 
     function runGame(){
@@ -61,12 +71,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 let randImg = Math.floor(Math.random() * 4);
                 currentCar.carImg.src = `resources/car${randImg}.png`; 
                 // change position
-                currentCar.carX = Math.random() * (screen.width-65 - 10) + 10; 
+                currentCar.carX = Math.random() * (currentCar.screen.width-65 - 10) + 10; 
                 currentCar.carY = Math.random() * (-200 - 100) -200;
                 // change car speed
                 currentCar.speed = Math.floor(Math.random() * 11);
             }
         }
+
+        // Add dynamic stats
 
         // draw players car
         playerCar.drive();
@@ -94,11 +106,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // our animation basics
         requestAnimationFrame(play);
         // clear canvas before next frame
-        context.clearRect(0, 0, screen.width, screen.height);
+        gameCtx.clearRect(0, 0, gameScreen.width, gameScreen.height);
         runGame();
+        statsCtx.clearRect(0, 0, statsScreen.width, statsScreen.height);
+        updateStats();
     }
 
     // start of the game
-    play();
+    // play();
 
 })
