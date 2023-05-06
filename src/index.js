@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //     this.context.drawImage(playerCar.carImg, playerCar.carX, playerCar.carY, 55, 90);
     // };
 
-    function renderGame(){
+    function runGame(){
 
         if (keys["ArrowRight"] === true) { // right move
             if (playerCar.carX > (playerCar.screen.width - 65)){
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (competitors[0].carY < competitors[0].screen.height){
             competitors[0].carY += 5; // improve later by adding relationship with game speed
             competitors[0].drive();
-        } else {
+        } else {   // if competitor car is out of bottom border then it appears on top
             competitors[0].carX = Math.random() * (screen.width-65 - 10) + 10;
             competitors[0].carY = Math.random() * (-200 - 100) -200;
         }
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(play);
         // clear canvas before next frame
         context.clearRect(0, 0, screen.width, screen.height);
-        renderGame();
+        runGame();
     }
 
     // start of the game

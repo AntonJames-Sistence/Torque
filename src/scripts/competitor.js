@@ -1,7 +1,8 @@
 class Competitor {
     constructor(screen, context){
         const competitorImg = new Image();
-        competitorImg.src = "resources/competitorCarImageFull.png";
+        let randImg = Math.floor(Math.random() * 4);
+        competitorImg.src = `resources/car${randImg}.png`;
         this.carImg = competitorImg;
         this.carX = Math.random() * (screen.width-65 - 10) + 10; // add randomized starting x pos
         this.carY = Math.random() * (-200 - 100) -200; // add random y pos
