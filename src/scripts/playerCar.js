@@ -3,10 +3,12 @@ class Player {
         const playerCarImg = new Image();
         playerCarImg.src = "resources/playerCarImage.png";
         this.carImg = playerCarImg;
+
         this.carX = 320;
         this.carY = 600;
         this.width = 55;
         this.height = 90;
+        
         this.context = context;
         this.screen = screen;
     }

@@ -14,94 +14,52 @@ document.addEventListener('DOMContentLoaded', () => {
     // creating competitors cars 5 with random positions
 
     const competitors = [];
-    for (let i = 0; i < 5; i++){
+    for (let i = 0; i < 5; i++){ // maybe refactor inside for loop for collision logic
         competitors.push(new Competitor(screen, context));
-        let currentCar = competitors[i];
     }
-
-
-    // prevent classic bug when we call drawImage before loading img and loading players car
-    // playerCar.carImg.onload = function() {
-    //     this.context.drawImage(playerCar.carImg, playerCar.carX, playerCar.carY, 55, 90);
-    // };
+    
 
     function runGame(){
 
-        if (keys["ArrowRight"] === true) { // right move
-            if (playerCar.carX > (playerCar.screen.width - 65)){
-                playerCar.carX = playerCar.screen.width - 55;
+        if ((keys["ArrowRight"]) && (playerCar.carX < (playerCar.screen.width - 65))) { 
+                playerCar.carX += 5; // right move
+        }
+
+        if ((keys["ArrowLeft"]) && (playerCar.carX > 10)) { 
+                playerCar.carX -= 5; // left move
+        }
+
+        if ((keys["ArrowUp"]) && (playerCar.carY > 10)) { 
+                playerCar.carY -= 5; // move up with speed 5 for now
+        }
+
+        if ((keys["ArrowDown"]) && (playerCar.carY < playerCar.screen.height-90)) { 
+            playerCar.carY += 5; // move down
+        }
+
+
+        for(let i = 0; i < competitors.length; i++){
+            let currentCar = competitors[i];
+
+            if (currentCar.carY < currentCar.screen.height){
+                if ( ((currentCar.carY >= playerCar.carY-90) && (currentCar.carY <= playerCar.carY))
+                && ((currentCar.carX >= playerCar.carX-45) && (currentCar.carX <= playerCar.carX+45)) ){
+
+                    console.log('hit another car');
+                    currentCar.drive();
+                } else {
+                    currentCar.carY += 3;
+                    currentCar.drive();
+                }
             } else {
-                playerCar.carX += 5;
+                let randImg = Math.floor(Math.random() * 4);
+                currentCar.carImg.src = `resources/car${randImg}.png`;
+                currentCar.carX = Math.random() * (screen.width-65 - 10) + 10;
+                currentCar.carY = Math.random() * (-200 - 100) -200;
             }
         }
 
-        if (keys["ArrowLeft"] === true) { // left move
-            if (playerCar.carX < 10){
-                playerCar.carX = 0;
-            } else {
-                playerCar.carX -= 5;
-            }
-        }
-
-        if (keys["ArrowUp"] === true) { // move up
-            if (playerCar.carY < 10){
-                playerCar.carY = 0;
-            } else {
-                playerCar.carY -= 5;
-            }
-        }
-
-        if (keys["ArrowDown"] === true) { // move down
-            if (playerCar.carY > playerCar.screen.height-100){
-                playerCar.carY = playerCar.screen.height-90;
-            } else {
-                playerCar.carY += 5;
-            }
-        }
-
-        // constantly render competitors cars
-        if (competitors[0].carY < competitors[0].screen.height){
-            competitors[0].carY += 5; // improve later by adding relationship with game speed
-            competitors[0].drive();
-        } else {   // if competitor car is out of bottom border then it appears on top
-            competitors[0].carX = Math.random() * (screen.width-65 - 10) + 10;
-            competitors[0].carY = Math.random() * (-200 - 100) -200;
-        }
-        
-
-        if (competitors[1].carY < competitors[1].screen.height){
-            competitors[1].carY += 5;
-            competitors[1].drive();
-        } else {
-            competitors[1].carX = Math.random() * (screen.width-65 - 10) + 10;
-            competitors[1].carY = Math.random() * (-200 - 100) -200;
-        }
-
-        if (competitors[2].carY < competitors[2].screen.height){
-            competitors[2].carY += 5;
-            competitors[2].drive();
-        } else {
-            competitors[2].carX = Math.random() * (screen.width-65 - 10) + 10;
-            competitors[2].carY = Math.random() * (-200 - 100) -200;
-        }
-
-        if (competitors[3].carY < competitors[3].screen.height){
-            competitors[3].carY += 5;
-            competitors[3].drive();
-        } else {
-            competitors[3].carX = Math.random() * (screen.width-65 - 10) + 10;
-            competitors[3].carY = Math.random() * (-200 - 100) -200;
-        }
-
-        if (competitors[4].carY < competitors[4].screen.height){
-            competitors[4].carY += 5;
-            competitors[4].drive();
-        } else {
-            competitors[4].carX = Math.random() * (screen.width-65 - 10) + 10;
-            competitors[4].carY = Math.random() * (-200 - 100) -200;
-        }
-
-        // render players car
+        // draw players car
         playerCar.drive();
     }
 

@@ -1,4 +1,7 @@
-
+    // prevent classic bug when we call drawImage before loading img and loading players car
+    // playerCar.carImg.onload = function() {
+    //     this.context.drawImage(playerCar.carImg, playerCar.carX, playerCar.carY, 55, 90);
+    // };
 
     
     // creating starting position for players car
@@ -84,3 +87,36 @@
     //     }
         
     // }
+
+
+        // // constantly draw competitors cars
+        // if (competitors[0].carY < competitors[0].screen.height){
+        //     competitors[0].carY += 5; // improve later by adding relationship with game speed
+        //     competitors[0].drive();
+        // } else {   // if competitor car is out of bottom border then it appears on top
+        //     competitors[0].carX = Math.random() * (screen.width-65 - 10) + 10;
+        //     competitors[0].carY = Math.random() * (-200 - 100) -200;
+        // }
+                // if (competitors[2].carY < competitors[2].screen.height){
+        //     competitors[2].carY += 5;
+        //     competitors[2].drive();
+        // } else {
+        //     competitors[2].carX = Math.random() * (screen.width-65 - 10) + 10;
+        //     competitors[2].carY = Math.random() * (-200 - 100) -200;
+        // }
+
+        // if (competitors[3].carY < competitors[3].screen.height){
+        //     competitors[3].carY += 5;
+        //     competitors[3].drive();
+        // } else {
+        //     competitors[3].carX = Math.random() * (screen.width-65 - 10) + 10;
+        //     competitors[3].carY = Math.random() * (-200 - 100) -200;
+        // }
+
+        // if (competitors[4].carY < competitors[4].screen.height){
+        //     competitors[4].carY += 5;
+        //     competitors[4].drive();
+        // } else {
+        //     competitors[4].carX = Math.random() * (screen.width-65 - 10) + 10;
+        //     competitors[4].carY = Math.random() * (-200 - 100) -200;
+        // }
