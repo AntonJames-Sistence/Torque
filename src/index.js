@@ -9,9 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // updating game stats
     function updateStats(){
         statsCtx.font = "20px Arial";
-        // statsCtx.textStyle = "red";
-        statsCtx.fillText(`Current game speed: ${gameSpeed}`, 10, 30);
+        // game speed
+        statsCtx.fillText(`Current game speed: ${gameSpeed}`, 10, 100);
+        // current score
+        statsCtx.fillText(`Your score: ${score}`, 10, 200);
+        // current lives
+        statsCtx.fillText(`Lives: ${playerCar.lives}`, 10, 300);
     }
+//====================================================================================================
 
     // get main game canvas
     const gameScreen = document.getElementById('screen');
@@ -21,11 +26,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const playerCar = new Player(gameScreen, gameCtx);
 
     // creating competitors cars 5 with random positions
-
     const competitors = [];
     for (let i = 0; i < 5; i++){ // maybe refactor inside for loop for collision logic
         competitors.push(new Competitor(gameScreen, gameCtx));
     }
+
+//====================================================================================================
+
+    // score
+    let score = 0;
 
     // set up gameSpeed parameter
     let gameSpeed = 0;
@@ -33,6 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // increasing gameSpeed by setting up interval
     setInterval(() => {if(gameSpeed < 10) gameSpeed += 1}, 5000);
 
+//====================================================================================================
+
+    // keys object, allow to store info about what keys are currently pressed
+    const keys = {};
 
     function runGame(){
 
@@ -52,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             playerCar.carY += playerCar.speed + gameSpeed; // down move with speed relationship
         }
 
+//====================================================================================================
 
         for(let i = 0; i < competitors.length; i++){
             let currentCar = competitors[i];
@@ -60,31 +74,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 if ( ((currentCar.carY >= playerCar.carY-90) && (currentCar.carY <= playerCar.carY+90))
                 && ((currentCar.carX >= playerCar.carX-55) && (currentCar.carX <= playerCar.carX+55)) ){
 
-                    console.log('Whoops you hit a car!');
-                    currentCar.drive();
+                    if (playerCar.lives > 0){
+                        playerCar.lives -= 1;
+                        currentCar.drive();
+                    } else {
+                        alert(`Game over, your final score: ${score}`);
+                    }      
                 } else {
                     currentCar.carY += currentCar.speed + gameSpeed; // speed relationships
                     currentCar.drive();
                 }
             } else {
-                // change car img
+                // randomize competitor car img
                 let randImg = Math.floor(Math.random() * 4);
                 currentCar.carImg.src = `resources/car${randImg}.png`; 
-                // change position
+                // randomize competitor position
                 currentCar.carX = Math.random() * (currentCar.screen.width-65 - 10) + 10; 
                 currentCar.carY = Math.random() * (-200 - 100) -200;
-                // change car speed
+                // randomize competitor car speed
                 currentCar.speed = Math.floor(Math.random() * 11);
             }
         }
-
-        // Add dynamic stats
 
         // draw players car
         playerCar.drive();
     }
 
-    const keys = {};
+//====================================================================================================
 
     // add listener for keyDown process
     document.addEventListener(
@@ -101,10 +117,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     );
 
+//====================================================================================================
+
     // logic for main game loop
     function play(){
-        // our animation basics
+        // animation logic
         requestAnimationFrame(play);
+        // score increasement based on game speed
+        score += (1 * gameSpeed);
         // clear canvas before next frame
         gameCtx.clearRect(0, 0, gameScreen.width, gameScreen.height);
         runGame();
@@ -113,6 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // start of the game
-    // play();
+    play();
 
 })

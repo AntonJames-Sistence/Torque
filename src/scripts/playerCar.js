@@ -17,6 +17,9 @@ class Player {
         // canvas connection
         this.context = context;
         this.screen = screen;
+
+        // lives
+        this.lives = 3;
     }
 
     // simple reDraw
