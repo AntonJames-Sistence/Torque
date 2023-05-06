@@ -1,4 +1,4 @@
-class PlayerCar {
+class Player {
     constructor(screen, context) { 
         const playerCarImg = new Image();
         playerCarImg.src = "resources/playerCarImage.png";
@@ -18,4 +18,4 @@ class PlayerCar {
 
 }
 
-export default PlayerCar;
+export default Player;
