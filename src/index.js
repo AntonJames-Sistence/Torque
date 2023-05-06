@@ -2,7 +2,6 @@ import Player from './scripts/playerCar';
 import Competitor from './scripts/competitor';
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Hello from index.js!')
 
     // getiing canvas
     const screen = document.getElementById('screen');
@@ -17,24 +16,30 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < 5; i++){ // maybe refactor inside for loop for collision logic
         competitors.push(new Competitor(screen, context));
     }
-    
+
+    // set up gameSpeed parameter
+    let gameSpeed = 1;
+
+    // increasing gameSpeed by setting up interval
+    setInterval(() => {if(gameSpeed < 10) gameSpeed += 1}, 1000);
+
 
     function runGame(){
 
         if ((keys["ArrowRight"]) && (playerCar.carX < (playerCar.screen.width - 65))) { 
-                playerCar.carX += 5; // right move
+                playerCar.carX += playerCar.speed + gameSpeed; // right move with speed relationship
         }
 
         if ((keys["ArrowLeft"]) && (playerCar.carX > 10)) { 
-                playerCar.carX -= 5; // left move
+                playerCar.carX -= playerCar.speed + gameSpeed; // left move with speed relationship
         }
 
         if ((keys["ArrowUp"]) && (playerCar.carY > 10)) { 
-                playerCar.carY -= 5; // move up with speed 5 for now
+                playerCar.carY -= playerCar.speed + gameSpeed; // up move with speed relationship
         }
 
         if ((keys["ArrowDown"]) && (playerCar.carY < playerCar.screen.height-90)) { 
-            playerCar.carY += 5; // move down
+            playerCar.carY += playerCar.speed + gameSpeed; // down move with speed relationship
         }
 
 
@@ -42,20 +47,24 @@ document.addEventListener('DOMContentLoaded', () => {
             let currentCar = competitors[i];
 
             if (currentCar.carY < currentCar.screen.height){
-                if ( ((currentCar.carY >= playerCar.carY-90) && (currentCar.carY <= playerCar.carY))
-                && ((currentCar.carX >= playerCar.carX-45) && (currentCar.carX <= playerCar.carX+45)) ){
+                if ( ((currentCar.carY >= playerCar.carY-90) && (currentCar.carY <= playerCar.carY+90))
+                && ((currentCar.carX >= playerCar.carX-55) && (currentCar.carX <= playerCar.carX+55)) ){
 
-                    console.log('hit another car');
+                    console.log('Whoops you hit a car!');
                     currentCar.drive();
                 } else {
-                    currentCar.carY += 3;
+                    currentCar.carY += currentCar.speed + gameSpeed; // speed relationships
                     currentCar.drive();
                 }
             } else {
+                // change car img
                 let randImg = Math.floor(Math.random() * 4);
-                currentCar.carImg.src = `resources/car${randImg}.png`;
-                currentCar.carX = Math.random() * (screen.width-65 - 10) + 10;
+                currentCar.carImg.src = `resources/car${randImg}.png`; 
+                // change position
+                currentCar.carX = Math.random() * (screen.width-65 - 10) + 10; 
                 currentCar.carY = Math.random() * (-200 - 100) -200;
+                // change car speed
+                currentCar.speed = Math.floor(Math.random() * 11);
             }
         }
 
