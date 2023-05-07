@@ -1,10 +1,36 @@
 import Player from './scripts/playerCar';
 import Competitor from './scripts/competitor';
+import Background from './scripts/background';
 
 document.addEventListener('DOMContentLoaded', () => {
+    
     // get stats canvas
     const statsScreen = document.getElementById('stats');
     const statsCtx = statsScreen.getContext("2d");
+
+    // get main game canvas
+    const gameScreen = document.getElementById('screen');
+    const gameCtx = gameScreen.getContext("2d");
+
+//====================================================================================================
+
+        // pause feature
+    // let isPaused = false;
+
+    // function tooglePause() {
+    //     isPaused = true;
+    // }
+
+    // score
+    let score = 0;
+
+    // set up gameSpeed parameter
+    let gameSpeed = 1;
+
+    // increasing gameSpeed by setting up interval
+    setInterval(() => {if(gameSpeed < 10) gameSpeed += 0.25}, 5000);
+
+//====================================================================================================
 
     // updating game stats
     function updateStats(){
@@ -18,10 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 //====================================================================================================
 
-    // get main game canvas
-    const gameScreen = document.getElementById('screen');
-    const gameCtx = gameScreen.getContext("2d");
-
     // creating player car
     const playerCar = new Player(gameScreen, gameCtx);
 
@@ -31,29 +53,21 @@ document.addEventListener('DOMContentLoaded', () => {
         competitors.push(new Competitor(gameScreen, gameCtx));
     }
 
-//====================================================================================================
-    // pause feature
-    let isPaused = false;
+    const roadBackground1 = new Background(gameScreen, gameCtx, 0);
+    const roadBackground2 = new Background(gameScreen, gameCtx, -700);
 
-    function tooglePause() {
-        isPaused = true;
-    }
-
-    // score
-    let score = 0;
-
-    // set up gameSpeed parameter
-    let gameSpeed = 1;
-
-    // increasing gameSpeed by setting up interval
-    setInterval(() => {if(gameSpeed < 10) gameSpeed += 0.25}, 5000);
-
-//====================================================================================================
+// =============================================================================================
 
     // keys object, allow to store info about what keys are currently pressed
     const keys = {};
 
     function runGame(){
+
+        // update road frames one and two and draw it
+        roadBackground1.updateBackground(gameSpeed);
+        roadBackground1.drawBackground();
+        roadBackground2.updateBackgroundsecondFrame(gameSpeed);
+        roadBackground2.drawBackground();
 
         if ((keys["ArrowRight"]) && (playerCar.carX < (playerCar.screen.width - 65))) { 
                 playerCar.carX += playerCar.speed + gameSpeed; // right move with speed relationship
@@ -124,6 +138,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // draw players car
         playerCar.drive();
+
+
     }
 //====================================================================================================
 
@@ -160,19 +176,23 @@ function gameReset(){
 
     // logic for main game loop
     function play(){
+
+
         // animation logic, looping recursively
         frameId = requestAnimationFrame(play);
 
         // check if game paused, useful after final score alert or pause button implementation, maybe freeze time feature in future
-        if (isPaused === false){
-            // score increasement based on game speed
-            score += (1 * gameSpeed);
-            // clear canvas before next frame
-            gameCtx.clearRect(0, 0, gameScreen.width, gameScreen.height);
-            runGame();
-            statsCtx.clearRect(0, 0, statsScreen.width, statsScreen.height);
-            updateStats();
-        }
+        // if (isPaused === false){
+
+        // score increasement based on game speed
+        score += (1 * gameSpeed);
+        // clear canvas before next frame
+        gameCtx.clearRect(0, 0, gameScreen.width, gameScreen.height);
+        runGame();
+        statsCtx.clearRect(0, 0, statsScreen.width, statsScreen.height);
+        updateStats();
+
+        // }
 
     }
 
