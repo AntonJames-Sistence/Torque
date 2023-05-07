@@ -17,6 +17,11 @@ class Player {
         // canvas connection
         this.context = context;
         this.screen = screen;
+
+        // lives and invincible status
+        this.lives = 3;
+        this.invincible = false;
+        
     }
 
     // simple reDraw
