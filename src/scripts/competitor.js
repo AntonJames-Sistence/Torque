@@ -2,7 +2,7 @@ class Competitor {
     constructor(screen, context){
         // img paramaters with random generator
         const competitorImg = new Image();
-        let randImg = Math.floor(Math.random() * 4);
+        let randImg = Math.floor(Math.random() * 6);
         competitorImg.src = `resources/car${randImg}.png`;
         this.carImg = competitorImg;
 

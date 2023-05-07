@@ -77,10 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
             let currentCar = competitors[i];
 
             if (currentCar.carY < currentCar.screen.height){
-                if (currentCar.carY >= playerCar.carY-90 &&
+                if ( currentCar.carY >= playerCar.carY-90 &&
                     currentCar.carY <= playerCar.carY+90 &&
                     currentCar.carX >= playerCar.carX-55 &&
-                    currentCar.carX <= playerCar.carX+55   ){
+                    currentCar.carX <= playerCar.carX+55 ){
 
                     if ((playerCar.lives > 0)){
                         // check if players car is in invincible state
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } else {
                 // randomize competitor car img
-                let randImg = Math.floor(Math.random() * 4);
+                let randImg = Math.floor(Math.random() * 6);
                 currentCar.carImg.src = `resources/car${randImg}.png`; 
                 // randomize competitor position
                 currentCar.randomizeCarPos();
