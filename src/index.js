@@ -71,14 +71,27 @@ document.addEventListener('DOMContentLoaded', () => {
             let currentCar = competitors[i];
 
             if (currentCar.carY < currentCar.screen.height){
-                if ( ((currentCar.carY >= playerCar.carY-90) && (currentCar.carY <= playerCar.carY+90))
-                && ((currentCar.carX >= playerCar.carX-55) && (currentCar.carX <= playerCar.carX+55)) ){
+                if (currentCar.carY >= playerCar.carY-90 &&
+                    currentCar.carY <= playerCar.carY+90 &&
+                    currentCar.carX >= playerCar.carX-55 &&
+                    currentCar.carX <= playerCar.carX+55   ){
 
-                    if (playerCar.lives > 0){
-                        playerCar.lives -= 1;
+                    if ((playerCar.lives > 0)){
+                        // check if players car is in invincible state
+                        if(playerCar.invincible === false){
+                            // logic to prevent from loosing all lives in the same crash
+                            playerCar.invincible = true;
+                            playerCar.lives--;
+                            // invincibility timer
+                            setTimeout(() => {
+                            playerCar.invincible = false;
+                            }, 3000);
+                        }
+
                         currentCar.drive();
                     } else {
-                        alert(`Game over, your final score: ${score}`);
+                        playerCar.lives = 5; // temporary to keep rendering opponent cars
+                        // alert(`Game over, your final score: ${score}`);
                     }      
                 } else {
                     currentCar.carY += currentCar.speed + gameSpeed; // speed relationships

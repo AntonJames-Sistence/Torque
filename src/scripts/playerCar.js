@@ -18,8 +18,10 @@ class Player {
         this.context = context;
         this.screen = screen;
 
-        // lives
+        // lives and invincible status
         this.lives = 3;
+        this.invincible = false;
+        
     }
 
     // simple reDraw
