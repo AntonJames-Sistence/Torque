@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let gameSpeed = 1;
 
     // increasing gameSpeed by setting up interval
-    setInterval(() => {if(gameSpeed < 10) gameSpeed += 0.25}, 5000);
+    setInterval(() => {if(gameSpeed < 10) gameSpeed += 0.25}, 5000); // can be calibrated
 
 //====================================================================================================
 
@@ -69,11 +69,11 @@ document.addEventListener('DOMContentLoaded', () => {
         roadBackground2.updateBackgroundsecondFrame(gameSpeed);
         roadBackground2.drawBackground();
 
-        if ((keys["ArrowRight"]) && (playerCar.carX < (playerCar.screen.width - 65))) { 
+        if ((keys["ArrowRight"]) && (playerCar.carX < (playerCar.screen.width - 75))) { 
                 playerCar.carX += playerCar.speed + gameSpeed; // right move with speed relationship
         }
 
-        if ((keys["ArrowLeft"]) && (playerCar.carX > 10)) { 
+        if ((keys["ArrowLeft"]) && (playerCar.carX > 20)) { 
                 playerCar.carX -= playerCar.speed + gameSpeed; // left move with speed relationship
         }
 
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 playerCar.carY -= playerCar.speed + gameSpeed; // up move with speed relationship
         }
 
-        if ((keys["ArrowDown"]) && (playerCar.carY < playerCar.screen.height-90)) { 
+        if ((keys["ArrowDown"]) && (playerCar.carY < playerCar.screen.height-100)) { 
             playerCar.carY += playerCar.speed + gameSpeed; // down move with speed relationship
         }
 
@@ -90,11 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
         for(let i = 0; i < competitors.length; i++){
             let currentCar = competitors[i];
 
-            if (currentCar.carY < currentCar.screen.height){
-                if ( currentCar.carY >= playerCar.carY-90 &&
-                    currentCar.carY <= playerCar.carY+90 &&
-                    currentCar.carX >= playerCar.carX-55 &&
-                    currentCar.carX <= playerCar.carX+55 ){
+            if (currentCar.carY < currentCar.screen.height){ // can be calibrated
+                if ( currentCar.carY >= playerCar.carY-85 &&
+                    currentCar.carY <= playerCar.carY+85 &&
+                    currentCar.carX >= playerCar.carX-50 &&
+                    currentCar.carX <= playerCar.carX+50 ){
 
                     if ((playerCar.lives > 0)){
                         // check if players car is in invincible state

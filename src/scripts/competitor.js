@@ -26,7 +26,7 @@ class Competitor {
     }
 
     randomizeCarPos(){
-        this.carX = Math.random() * (this.screen.width-65 - 10) + 10; 
+        this.carX = Math.random() * (this.screen.width-75 - 20) + 20; // can be calibrated
         this.carY = Math.random() * (-200 - 100) -200;
     }
 }
