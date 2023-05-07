@@ -13,7 +13,7 @@ class Competitor {
         this.height = 90;
 
         // randomizer for speed parameter up to 10
-        this.speed = Math.floor(Math.random() * 11);
+        this.speed = 0;
 
         // canvas parameters 
         this.context = context;
@@ -23,6 +23,11 @@ class Competitor {
     // simple draw
     drive(){
         this.context.drawImage(this.carImg, this.carX, this.carY, this.width, this.height);
+    }
+
+    randomizeCarPos(){
+        this.carX = Math.random() * (this.screen.width-65 - 10) + 10; 
+        this.carY = Math.random() * (-200 - 100) -200;
     }
 }
 

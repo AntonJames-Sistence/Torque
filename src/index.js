@@ -32,15 +32,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 //====================================================================================================
+    // pause feature
+    let isPaused = false;
+
+    function tooglePause() {
+        isPaused = true;
+    }
 
     // score
     let score = 0;
 
     // set up gameSpeed parameter
-    let gameSpeed = 0;
+    let gameSpeed = 1;
 
     // increasing gameSpeed by setting up interval
-    setInterval(() => {if(gameSpeed < 10) gameSpeed += 1}, 5000);
+    setInterval(() => {if(gameSpeed < 10) gameSpeed += 0.25}, 5000);
 
 //====================================================================================================
 
@@ -90,8 +96,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         currentCar.drive();
                     } else {
-                        playerCar.lives = 5; // temporary to keep rendering opponent cars
-                        // alert(`Game over, your final score: ${score}`);
+                        currentCar.drive(); // require this car frame to keep it on the screen
+                        
+                        alert(`Game over, your final score: ${score}`);
+                        cancelAnimationFrame(frameId);
+                        // stopGame();
+                        // tooglePause();
+                        // setInterval(() => {
+                        //     isPaused = false;
+                        // }, 3000);
+                        // gameReset();
                     }      
                 } else {
                     currentCar.carY += currentCar.speed + gameSpeed; // speed relationships
@@ -102,16 +116,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 let randImg = Math.floor(Math.random() * 4);
                 currentCar.carImg.src = `resources/car${randImg}.png`; 
                 // randomize competitor position
-                currentCar.carX = Math.random() * (currentCar.screen.width-65 - 10) + 10; 
-                currentCar.carY = Math.random() * (-200 - 100) -200;
+                currentCar.randomizeCarPos();
                 // randomize competitor car speed
-                currentCar.speed = Math.floor(Math.random() * 11);
+                currentCar.speed = Math.floor(Math.random() * 5);
             }
         }
 
         // draw players car
         playerCar.drive();
     }
+//====================================================================================================
+
+function gameReset(){
+    playerCar.lives = 3;
+    score = 0;
+    gameSpeed = 1;
+    for(let i = 0; i < competitors.length; i++){
+        competitors[i].randomizeCarPos();
+    }
+}
 
 //====================================================================================================
 
@@ -131,18 +154,26 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
 //====================================================================================================
+    
+// set animation frameId for purpose of stopping the game
+    let frameId;
 
     // logic for main game loop
     function play(){
-        // animation logic
-        requestAnimationFrame(play);
-        // score increasement based on game speed
-        score += (1 * gameSpeed);
-        // clear canvas before next frame
-        gameCtx.clearRect(0, 0, gameScreen.width, gameScreen.height);
-        runGame();
-        statsCtx.clearRect(0, 0, statsScreen.width, statsScreen.height);
-        updateStats();
+        // animation logic, looping recursively
+        frameId = requestAnimationFrame(play);
+
+        // check if game paused, useful after final score alert or pause button implementation, maybe freeze time feature in future
+        if (isPaused === false){
+            // score increasement based on game speed
+            score += (1 * gameSpeed);
+            // clear canvas before next frame
+            gameCtx.clearRect(0, 0, gameScreen.width, gameScreen.height);
+            runGame();
+            statsCtx.clearRect(0, 0, statsScreen.width, statsScreen.height);
+            updateStats();
+        }
+
     }
 
     // start of the game
