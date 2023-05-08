@@ -21,9 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //     isPaused = true;
     // }
 
-    let music = new Audio();
-    music.src = "resources/speeding.mp3";
-
     // score
     let score = 0;
 
@@ -144,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     }
+
 //====================================================================================================
 
 // function gameReset(){
@@ -154,6 +152,33 @@ document.addEventListener('DOMContentLoaded', () => {
 //         competitors[i].randomizeCarPos();
 //     }
 // }
+
+//====================================================================================================
+
+//===================================== Music Feature ================================================
+    
+// creating new audio object to play music
+let music = new Audio();
+// source
+music.src = "resources/speeding.mp3";
+
+// get music buttons
+const playMusicBtn = document.getElementById("playMusic");
+const pauseMusicBtn = document.getElementById("stopMusic");
+
+// add event listeners
+playMusicBtn.addEventListener(
+    'click',
+    () => {
+        music.play();
+    }
+)
+pauseMusicBtn.addEventListener(
+    'click',
+    () => {
+        music.pause();
+    }
+)
 
 //====================================================================================================
 
@@ -200,6 +225,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // start of the game
     play();
-    music.play();
+    
 
 })
