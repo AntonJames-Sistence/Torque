@@ -14,12 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //====================================================================================================
 
-        // pause feature
+    // pause feature
     // let isPaused = false;
 
     // function tooglePause() {
     //     isPaused = true;
     // }
+
+    let music = new Audio();
+    music.src = "resources/speeding.mp3";
 
     // score
     let score = 0;
@@ -143,14 +146,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 //====================================================================================================
 
-function gameReset(){
-    playerCar.lives = 3;
-    score = 0;
-    gameSpeed = 1;
-    for(let i = 0; i < competitors.length; i++){
-        competitors[i].randomizeCarPos();
-    }
-}
+// function gameReset(){
+//     playerCar.lives = 3;
+//     score = 0;
+//     gameSpeed = 1;
+//     for(let i = 0; i < competitors.length; i++){
+//         competitors[i].randomizeCarPos();
+//     }
+// }
 
 //====================================================================================================
 
@@ -171,12 +174,11 @@ function gameReset(){
 
 //====================================================================================================
     
-// set animation frameId for purpose of stopping the game
+    // set animation frameId for purpose of stopping the game
     let frameId;
 
     // logic for main game loop
     function play(){
-
 
         // animation logic, looping recursively
         frameId = requestAnimationFrame(play);
@@ -198,5 +200,6 @@ function gameReset(){
 
     // start of the game
     play();
+    music.play();
 
 })
