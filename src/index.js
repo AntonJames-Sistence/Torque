@@ -12,6 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameScreen = document.getElementById('screen');
     const gameCtx = gameScreen.getContext("2d");
 
+    //get left and right side background canvas
+    const leftBkgScreen = document.getElementById('leftBackgroundPiece');
+    const leftBkgCtx = leftBkgScreen.getContext("2d");
+
+    const rightBkgScreen = document.getElementById('rightBackgroundPiece');
+    const rightBkgCtx = rightBkgScreen.getContext("2d");
+
 //====================================================================================================
 
     // pause feature
@@ -25,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let score = 0;
 
     // set up gameSpeed parameter
-    let gameSpeed = 1;
+    let gameSpeed = 4;
 
     // increasing gameSpeed by setting up interval
     setInterval(() => {if(gameSpeed < 10) gameSpeed += 0.25}, 5000); // can be calibrated
@@ -53,20 +60,41 @@ document.addEventListener('DOMContentLoaded', () => {
         competitors.push(new Competitor(gameScreen, gameCtx));
     }
 
-    const roadBackground1 = new Background(gameScreen, gameCtx, 0);
-    const roadBackground2 = new Background(gameScreen, gameCtx, -700);
+    // main road backgroun
+    const roadBackground1 = new Background(gameScreen, gameCtx, 0, "resources/roadBackground.png");
+    const roadBackground2 = new Background(gameScreen, gameCtx, -700, "resources/roadBackground.png");
 
-// =============================================================================================
+    // side animation left part
+    const leftSideBackground1 = new Background(leftBkgScreen, leftBkgCtx, 0, "resources/leftBackground.jpg")
+    const leftSideBackground2 = new Background(leftBkgScreen, leftBkgCtx, -700, "resources/leftBackground.jpg")
+
+    // side animation right part
+    const rightSideBackground1 = new Background(rightBkgScreen, rightBkgCtx, 0, "resources/rightBackground.png")
+    const rightSideBackground2 = new Background(rightBkgScreen, rightBkgCtx, -700, "resources/rightBackground.png")
+
+// ===================================================================================================
 
     // keys object, allow to store info about what keys are currently pressed
     const keys = {};
 
     function runGame(){
 
+        // update and draw left side background
+        leftSideBackground1.updateBack(gameSpeed);
+        leftSideBackground2.updateBackSecondFrame(gameSpeed);
+        leftSideBackground1.drawBackground();
+        leftSideBackground2.drawBackground();
+
+        // update and draw right side background
+        rightSideBackground1.updateBack(gameSpeed);
+        rightSideBackground2.updateBackSecondFrame(gameSpeed);
+        rightSideBackground1.drawBackground();
+        rightSideBackground2.drawBackground();
+
         // update road frames one and two and draw it
         roadBackground1.updateBackground(gameSpeed);
-        roadBackground1.drawBackground();
         roadBackground2.updateBackgroundsecondFrame(gameSpeed);
+        roadBackground1.drawBackground();
         roadBackground2.drawBackground();
 
         if ((keys["ArrowRight"]) && (playerCar.carX < (playerCar.screen.width - 75))) { 
@@ -90,7 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
         for(let i = 0; i < competitors.length; i++){
             let currentCar = competitors[i];
 
-            if (currentCar.carY < currentCar.screen.height){ // can be calibrated
+            // check if competitor car is inside main screen
+            if (currentCar.carY < currentCar.screen.height){
+                // check if competitor car hits player car
                 if ( currentCar.carY >= playerCar.carY-85 &&
                     currentCar.carY <= playerCar.carY+85 &&
                     currentCar.carX >= playerCar.carX-50 &&
@@ -111,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         currentCar.drive();
                     } else {
                         currentCar.drive(); // require this car frame to keep it on the screen
-                        
+
                         alert(`Game over, your final score: ${score}`);
                         cancelAnimationFrame(frameId);
                         // stopGame();
@@ -138,8 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // draw players car
         playerCar.drive();
-
-
     }
 
 //====================================================================================================
@@ -154,6 +182,14 @@ document.addEventListener('DOMContentLoaded', () => {
 // }
 
 //====================================================================================================
+
+
+
+
+
+
+
+
 
 //===================================== Music Feature ================================================
     
@@ -213,10 +249,18 @@ pauseMusicBtn.addEventListener(
 
         // score increasement based on game speed
         score += (1 * gameSpeed);
-        // clear canvas before next frame
+
+        // clear left and right background canvases before next frame
+        leftBkgCtx.clearRect(0, 0, leftBkgScreen.width, leftBkgScreen.height)
+        rightBkgCtx.clearRect(0, 0, rightBkgScreen.width, rightBkgScreen.height)
+
+        // clear main game canvas before next frame
         gameCtx.clearRect(0, 0, gameScreen.width, gameScreen.height);
-        runGame();
+        
+        // clear stat canvas
         statsCtx.clearRect(0, 0, statsScreen.width, statsScreen.height);
+
+        runGame();
         updateStats();
 
         // }

@@ -1,21 +1,14 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
-#screen {
-  border: 5px solid #A64456;
-  border-radius: 3%;
-}
-
 #stats {
   background-color: #f25a38;
   border: 5px solid #F29829;
-  border-radius: 8%;
 }
 
 #support-bar {
   background-color: #F2AC29;
   border: 5px solid #F24444;
-  border-radius: 8%;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -74,7 +67,6 @@ table {
 
 #main {
   display: flex;
-  justify-content: space-between;
 }
 
 button {
