@@ -139,7 +139,7 @@ roadBackground2.drawBackground();
                             gameSpeed = 1;
                             // invincibility timer
                             setTimeout(() => {
-                            playerCar.invincible = false;
+                            // playerCar.invincible = false;
                             }, 3000);
                         }
 
@@ -161,6 +161,7 @@ roadBackground2.drawBackground();
                 // randomize competitor car img
                 let randImg = Math.floor(Math.random() * 6);
                 currentCar.carImg.src = `resources/car${randImg}.png`;
+                currentCar.crashPointFrame = 0;
                 currentCar.destroyed = false; 
                 // randomize competitor position
                 currentCar.randomizeCarPos();

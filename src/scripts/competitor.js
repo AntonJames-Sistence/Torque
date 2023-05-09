@@ -20,8 +20,8 @@ class Competitor {
         this.screen = screen;
 
         // crash implementation
-        this.frame = 0;
         this.destroyed = false;
+        this.crashPointFrame = 0;
     }
 
     // simple draw
@@ -29,15 +29,37 @@ class Competitor {
         // change img in case of crash
         if (this.destroyed){
             let crashImg = new Image();
-            crashImg.src = 'resources/crashAnimation/crash2.png';
+
+            // super ugly piece of code
+            if(this.crashPointFrame < 11){
+                crashImg.src = 'resources/crashAnimation/crash0.png';
+            } else if((this.crashPointFrame > 10)&&(this.crashPointFrame < 21)){
+                crashImg.src = 'resources/crashAnimation/crash1.png';
+            } else if((this.crashPointFrame > 20)&&(this.crashPointFrame < 31)){
+                crashImg.src = 'resources/crashAnimation/crash2.png';
+            } else if((this.crashPointFrame > 30)&&(this.crashPointFrame < 41)){
+                crashImg.src = 'resources/crashAnimation/crash3.png';
+            } else if((this.crashPointFrame > 40)&&(this.crashPointFrame < 51)){
+                crashImg.src = 'resources/crashAnimation/crash4.png';
+            } else if((this.crashPointFrame > 50)&&(this.crashPointFrame < 61)){
+                crashImg.src = 'resources/crashAnimation/crash5.png';
+            } else if((this.crashPointFrame > 60)&&(this.crashPointFrame < 71)){
+                crashImg.src = 'resources/crashAnimation/crash6.png';
+            } else if((this.crashPointFrame > 70)&&(this.crashPointFrame < 81)){
+                crashImg.src = 'resources/crashAnimation/crash7.png';
+            }
+    
             this.carImg = crashImg;
-            // change car image
+
+            // !!! super important draw is still going but invisible, means it is critical bug !!!
+            // change car image according to logic above
             this.context.drawImage(this.carImg, this.carX-20, this.carY, 100, 100); // hardcoded crash image
+
+            this.crashPointFrame += 1;
         } else {
             this.context.drawImage(this.carImg, this.carX, this.carY, this.width, this.height);
         };
-        // keeping track of frames
-        this.frame += 1;
+
     }
 
     randomizeCarPos(){
