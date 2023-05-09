@@ -1,6 +1,7 @@
 import Player from './scripts/playerCar';
 import Competitor from './scripts/competitor';
 import Background from './scripts/background';
+import LifeBar from './scripts/lifeBar';
 
 document.addEventListener('DOMContentLoaded', () => {
     
@@ -30,9 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let gameSpeed = 1;
 
     // increasing gameSpeed by setting up interval
-    setInterval(() => {if(gameSpeed < 10) gameSpeed += 1}, 4000); // can be calibrated
+    setInterval(() => { if(gameSpeed < 10) gameSpeed += 1 }, 4000); // can be calibrated
 
-//======================================== Game Stats =================================================
+//======================================== Game Stats Bar ===============================================
+
+    const lifes = new LifeBar(statsScreen, statsCtx);
 
     // updating game stats
     function updateStats(){
@@ -43,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         statsCtx.fillText(`Your score: ${score}`, 10, 200);
         // current lives
         statsCtx.fillText(`Lives: ${playerCar.lives}`, 10, 300);
+        lifes.draw();
     }
 //====================================== Create Game Objects/Backgrounds ===============================
 
@@ -69,12 +73,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //====================================== Initial Background ==============================================
 // doesnt work
-leftSideBackground1.drawBackground();
-leftSideBackground2.drawBackground();
-rightSideBackground1.drawBackground();
-rightSideBackground2.drawBackground();
-roadBackground1.drawBackground();
-roadBackground2.drawBackground();
+// leftSideBackground1.drawBackground();
+// leftSideBackground2.drawBackground();
+// rightSideBackground1.drawBackground();
+// rightSideBackground2.drawBackground();
+// roadBackground1.drawBackground();
+// roadBackground2.drawBackground();
 
 // ===================================== Main Game Loop Logic ============================================
 
