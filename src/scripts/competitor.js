@@ -30,28 +30,28 @@ class Competitor {
         if (this.destroyed){
             let crashImg = new Image();
 
-            // super ugly piece of code
-            if(this.crashPointFrame < 11){
+            // work with crash animation frames
+            if(this.crashPointFrame < 8){
                 crashImg.src = 'resources/crashAnimation/crash0.png';
-            } else if((this.crashPointFrame > 10)&&(this.crashPointFrame < 21)){
+            } else if((this.crashPointFrame > 7)&&(this.crashPointFrame < 15)){
                 crashImg.src = 'resources/crashAnimation/crash1.png';
-            } else if((this.crashPointFrame > 20)&&(this.crashPointFrame < 31)){
+            } else if((this.crashPointFrame > 14)&&(this.crashPointFrame < 22)){
                 crashImg.src = 'resources/crashAnimation/crash2.png';
-            } else if((this.crashPointFrame > 30)&&(this.crashPointFrame < 41)){
+            } else if((this.crashPointFrame > 21)&&(this.crashPointFrame < 29)){
                 crashImg.src = 'resources/crashAnimation/crash3.png';
-            } else if((this.crashPointFrame > 40)&&(this.crashPointFrame < 51)){
+            } else if((this.crashPointFrame > 28)&&(this.crashPointFrame < 36)){
                 crashImg.src = 'resources/crashAnimation/crash4.png';
-            } else if((this.crashPointFrame > 50)&&(this.crashPointFrame < 61)){
+            } else if((this.crashPointFrame > 35)&&(this.crashPointFrame < 43)){
                 crashImg.src = 'resources/crashAnimation/crash5.png';
-            } else if((this.crashPointFrame > 60)&&(this.crashPointFrame < 71)){
+            } else if((this.crashPointFrame > 42)&&(this.crashPointFrame < 50)){
                 crashImg.src = 'resources/crashAnimation/crash6.png';
-            } else if((this.crashPointFrame > 70)&&(this.crashPointFrame < 81)){
+            } else if((this.crashPointFrame > 49)&&(this.crashPointFrame < 57)){
                 crashImg.src = 'resources/crashAnimation/crash7.png';
+            } else {
+                this.carY = 800;
             }
-    
             this.carImg = crashImg;
 
-            // !!! super important draw is still going but invisible, means it is critical bug !!!
             // change car image according to logic above
             this.context.drawImage(this.carImg, this.carX-20, this.carY, 100, 100); // hardcoded crash image
 

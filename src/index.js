@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let gameSpeed = 1;
 
     // increasing gameSpeed by setting up interval
-    setInterval(() => {if(gameSpeed < 20) gameSpeed += 1}, 4000); // can be calibrated
+    setInterval(() => {if(gameSpeed < 10) gameSpeed += 1}, 4000); // can be calibrated
 
 //======================================== Game Stats =================================================
 
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const rightSideBackground2 = new Background(rightBkgScreen, rightBkgCtx, -700, "resources/rightBackground.png")
 
 //====================================== Initial Background ==============================================
-
+// doesnt work
 leftSideBackground1.drawBackground();
 leftSideBackground2.drawBackground();
 rightSideBackground1.drawBackground();
@@ -102,19 +102,19 @@ roadBackground2.drawBackground();
         roadBackground2.drawBackground();
 
         if ((keys["ArrowRight"]) && (playerCar.carX < (playerCar.screen.width - 75))) { 
-                playerCar.carX += playerCar.speed + gameSpeed; // right move with speed relationship
+                playerCar.carX += playerCar.speed + (gameSpeed * 0.7); // right move with speed relationship
         }
 
         if ((keys["ArrowLeft"]) && (playerCar.carX > 20)) { 
-                playerCar.carX -= playerCar.speed + gameSpeed; // left move with speed relationship
+                playerCar.carX -= playerCar.speed + (gameSpeed * 0.7); // left move with speed relationship
         }
 
         if ((keys["ArrowUp"]) && (playerCar.carY > 10)) { 
-                playerCar.carY -= playerCar.speed + gameSpeed; // up move with speed relationship
+                playerCar.carY -= playerCar.speed + (gameSpeed * 0.7); // up move with speed relationship
         }
 
         if ((keys["ArrowDown"]) && (playerCar.carY < playerCar.screen.height-100)) { 
-            playerCar.carY += playerCar.speed + gameSpeed; // down move with speed relationship
+            playerCar.carY += playerCar.speed + (gameSpeed * 0.7); // down move with speed relationship
         }
 
 //=================================== Competitors and physics =================================================
@@ -139,7 +139,7 @@ roadBackground2.drawBackground();
                             gameSpeed = 1;
                             // invincibility timer
                             setTimeout(() => {
-                            // playerCar.invincible = false;
+                            playerCar.invincible = false;
                             }, 3000);
                         }
 

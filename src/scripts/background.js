@@ -19,7 +19,7 @@ class Background {
 
     // update image for main road first frame
     updateBackground(gameSpeed){
-        this.bkgY += (gameSpeed * 5) + 5;
+        this.bkgY += (gameSpeed + 5);
         if (this.bkgY >= 700){
             this.bkgY = 0;
         };
@@ -27,7 +27,7 @@ class Background {
 
     // update image for main road second frame
     updateBackgroundsecondFrame(gameSpeed){
-        this.bkgY += (gameSpeed * 5) + 5;
+        this.bkgY += (gameSpeed + 5);
         if (this.bkgY >= 0){
             this.bkgY = -700;
         };
@@ -40,14 +40,14 @@ class Background {
     //================================= Side Background Frames Methods ======================================
 
     updateBack(){
-        this.bkgY += 0.3;
+        this.bkgY += 1;
         if (this.bkgY >= 700) {
             this.bkgY = 0;
         };
     }
 
     updateBackSecondFrame(){
-        this.bkgY += 0.3;
+        this.bkgY += 1;
         if (this.bkgY >= 0) {
             this.bkgY = -700;
         };
