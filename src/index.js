@@ -22,18 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const rightBkgCtx = rightBkgScreen.getContext("2d");
 
 //====================================================================================================
-    // pause feature
-    // let isPaused = false;
-
-    // function tooglePause() {
-    //     isPaused = true;
-    // }
 
     // score
     let score = 0;
 
     // set up gameSpeed parameter
-    let gameSpeed = 0;
+    let gameSpeed = 1;
 
     // increasing gameSpeed by setting up interval
     setInterval(() => {if(gameSpeed < 10) gameSpeed += 0.25}, 5000); // can be calibrated
@@ -143,15 +137,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         currentCar.drive(); // require this car frame to keep it on the screen
 
-                        alert(`Game over, your final score: ${score}`);
+                        // alert(`Game over, your final score: ${score}`);
                         cancelAnimationFrame(frameId);
+                        finalScoreToggler();
                         
-                        // stopGame();
-                        // tooglePause();
-                        // setInterval(() => {
-                        //     isPaused = false;
-                        // }, 3000);
-                        // gameReset();
                     }      
                 } else {
                     currentCar.carY += currentCar.speed + gameSpeed; // speed relationships
@@ -172,26 +161,19 @@ document.addEventListener('DOMContentLoaded', () => {
         playerCar.drive();
     }
 
-//====================================================================================================
+//========================== Reset parameters for Restarting the game ================================
 
-// function gameReset(){
-//     playerCar.lives = 3;
-//     score = 0;
-//     gameSpeed = 1;
-//     for(let i = 0; i < competitors.length; i++){
-//         competitors[i].randomizeCarPos();
-//     }
-// }
-
-//====================================================================================================
-
-
-
-
-
-
-
-
+function resetGameParams() {
+    score = 0;
+    gameSpeed = 1;
+    playerCar.lives = 3;
+    playerCar.carX = 270;
+    playerCar.carY = 600;
+    for(let i = 0; i < competitors.length; i++){
+        competitors[i].randomizeCarPos();
+        competitors[i].speed = 0;
+    }
+}
 
 //===================================== Music Feature ================================================
     
@@ -289,8 +271,34 @@ pauseMusicBtn.addEventListener(
     startButton.addEventListener(
         'click',
         greetingToggler
-    )
+    );
     
     // start of the game
     greetingToggler();
+
+    //======================================= Final Score Message / End Game ============================================
+
+    function finalScoreToggler() {
+        let finalMessage = document.getElementById("finalMessage");
+
+        if (finalMessage.style.display === "block"){
+            finalMessage.style.display = "none";
+            // reStart of the game
+            resetGameParams();
+            play();
+        } else {
+            finalMessage.style.display = "block";
+            let fMes = document.createElement("h3");
+            fMes.textContent = `Game over! Your score is: ${score}`;
+            finalMessage.appendChild(fMes);
+        }
+    }
+
+    const restartButton = document.getElementById('restartGame');
+
+    restartButton.addEventListener(
+        'click',
+        finalScoreToggler
+    );
+
 })

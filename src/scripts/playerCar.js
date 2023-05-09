@@ -6,7 +6,7 @@ class Player {
         this.carImg = playerCarImg;
 
         // players car starting position and size
-        this.carX = 320;
+        this.carX = 270;
         this.carY = 600;
         this.width = 55;
         this.height = 90;

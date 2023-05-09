@@ -28,7 +28,7 @@ button:hover {
     border: 5px solid #037F8C;
 }
 
-#greetings {
+#greetings, #finalMessage {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -44,7 +44,7 @@ button:hover {
     color: black;
 }
 
-#startGame {
+#startGame, #restartGame {
     position: absolute;
     bottom: 20px;
     left: 40%;

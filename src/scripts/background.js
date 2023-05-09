@@ -19,7 +19,7 @@ class Background {
 
     // update image for main road first frame
     updateBackground(gameSpeed){
-        this.bkgY += gameSpeed * 3;
+        this.bkgY += gameSpeed + 3;
         if (this.bkgY >= 700){
             this.bkgY = 0;
         };
@@ -27,7 +27,7 @@ class Background {
 
     // update image for main road second frame
     updateBackgroundsecondFrame(gameSpeed){
-        this.bkgY += gameSpeed * 3;
+        this.bkgY += gameSpeed + 3;
         if (this.bkgY >= 0){
             this.bkgY = -700;
         };
