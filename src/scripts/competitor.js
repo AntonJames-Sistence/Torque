@@ -18,11 +18,26 @@ class Competitor {
         // canvas parameters 
         this.context = context;
         this.screen = screen;
+
+        // crash implementation
+        this.frame = 0;
+        this.destroyed = false;
     }
 
     // simple draw
     drive(){
-        this.context.drawImage(this.carImg, this.carX, this.carY, this.width, this.height);
+        // change img in case of crash
+        if (this.destroyed){
+            let crashImg = new Image();
+            crashImg.src = 'resources/crashAnimation/crash2.png';
+            this.carImg = crashImg;
+            // change car image
+            this.context.drawImage(this.carImg, this.carX-20, this.carY, 100, 100); // hardcoded crash image
+        } else {
+            this.context.drawImage(this.carImg, this.carX, this.carY, this.width, this.height);
+        };
+        // keeping track of frames
+        this.frame += 1;
     }
 
     randomizeCarPos(){

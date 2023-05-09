@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let gameSpeed = 1;
 
     // increasing gameSpeed by setting up interval
-    setInterval(() => {if(gameSpeed < 10) gameSpeed += 0.25}, 5000); // can be calibrated
+    setInterval(() => {if(gameSpeed < 20) gameSpeed += 1}, 4000); // can be calibrated
 
 //======================================== Game Stats =================================================
 
@@ -117,7 +117,7 @@ roadBackground2.drawBackground();
             playerCar.carY += playerCar.speed + gameSpeed; // down move with speed relationship
         }
 
-//====================================================================================================
+//=================================== Competitors and physics =================================================
 
         for(let i = 0; i < competitors.length; i++){
             let currentCar = competitors[i];
@@ -136,12 +136,16 @@ roadBackground2.drawBackground();
                             // logic to prevent from loosing all lives in the same crash
                             playerCar.invincible = true;
                             playerCar.lives--;
+                            gameSpeed = 1;
                             // invincibility timer
                             setTimeout(() => {
                             playerCar.invincible = false;
                             }, 3000);
                         }
 
+                        // logic after crash happens
+                        currentCar.destroyed = true;
+                        currentCar.carY += currentCar.speed + gameSpeed;
                         currentCar.drive();
                     } else {
                         // stop game
@@ -156,7 +160,8 @@ roadBackground2.drawBackground();
             } else {
                 // randomize competitor car img
                 let randImg = Math.floor(Math.random() * 6);
-                currentCar.carImg.src = `resources/car${randImg}.png`; 
+                currentCar.carImg.src = `resources/car${randImg}.png`;
+                currentCar.destroyed = false; 
                 // randomize competitor position
                 currentCar.randomizeCarPos();
                 // randomize competitor car speed
@@ -239,7 +244,7 @@ pauseMusicBtn.addEventListener(
         // if (isPaused === false){
 
         // score increasement based on game speed
-        score += (1 * gameSpeed);
+        score += Math.floor(1 * gameSpeed);
 
         // clear left and right background canvases before next frame
         leftBkgCtx.clearRect(0, 0, leftBkgScreen.width, leftBkgScreen.height)
