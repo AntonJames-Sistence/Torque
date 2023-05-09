@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const rightBkgScreen = document.getElementById('rightBackgroundPiece');
     const rightBkgCtx = rightBkgScreen.getContext("2d");
 
-//====================================================================================================
+//======================================= Score and Game speed setters ===============================
 
     // score
     let score = 0;
@@ -67,7 +67,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const rightSideBackground1 = new Background(rightBkgScreen, rightBkgCtx, 0, "resources/rightBackground.png")
     const rightSideBackground2 = new Background(rightBkgScreen, rightBkgCtx, -700, "resources/rightBackground.png")
 
-// ===================================================================================================
+//====================================== Initial Background ==============================================
+
+leftSideBackground1.drawBackground();
+leftSideBackground2.drawBackground();
+rightSideBackground1.drawBackground();
+rightSideBackground2.drawBackground();
+roadBackground1.drawBackground();
+roadBackground2.drawBackground();
+
+// ===================================== Main Game Loop Logic ============================================
 
     // keys object, allow to store info about what keys are currently pressed
     const keys = {};
@@ -135,12 +144,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         currentCar.drive();
                     } else {
-                        currentCar.drive(); // require this car frame to keep it on the screen
-
-                        // alert(`Game over, your final score: ${score}`);
+                        // stop game
                         cancelAnimationFrame(frameId);
+                        // call final message
                         finalScoreToggler();
-                        
                     }      
                 } else {
                     currentCar.carY += currentCar.speed + gameSpeed; // speed relationships
@@ -254,13 +261,17 @@ pauseMusicBtn.addEventListener(
     //======================================= Greetin Message / Game Start ============================================
 
     function greetingToggler() {
+        let greetingContainer = document.getElementById("greetings-container");
         let greeting = document.getElementById("greetings");
         if (greeting.style.display === "block"){
             greeting.style.display = "none";
+            greetingContainer.style.display = "none";
             // start of the game
+            resetGameParams(); // fix bag with speed on background
             play();
         } else {
             greeting.style.display = "block";
+            greetingContainer.style.display = "block";
         }
     }
 
@@ -280,14 +291,17 @@ pauseMusicBtn.addEventListener(
 
     function finalScoreToggler() {
         let finalMessage = document.getElementById("finalMessage");
+        let finalMessageContainer = document.getElementById("greetings-container");
 
         if (finalMessage.style.display === "block"){
             finalMessage.style.display = "none";
+            finalMessageContainer.style.display = "none";
             // reStart of the game
             resetGameParams();
             play();
         } else {
             finalMessage.style.display = "block";
+            finalMessageContainer.style.display = "block";
             let fMes = document.createElement("h3");
             fMes.textContent = `Game over! Your score is: ${score}`;
             finalMessage.appendChild(fMes);

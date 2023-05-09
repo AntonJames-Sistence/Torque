@@ -28,6 +28,19 @@ button:hover {
     border: 5px solid #037F8C;
 }
 
+#greetings-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    opacity: 0.85;
+  }
+
 #greetings, #finalMessage {
     position: absolute;
     top: 50%;
@@ -52,7 +65,29 @@ button:hover {
     
 }
 
-h2 {
+h3 {
     padding: 10px;
     font-weight: 900;
+}
+
+h2 {
+    padding-top: 0px;
+    padding-bottom: 17px;
+}
+
+// p {
+//     text-align: center;
+// }
+
+
+
+#arrows {
+    height: 100px;
+    margin: 10px;
+}
+
+#instructions {
+    // display: flex;
+    // flex-direction: column;
+    margin-top: 20px;
 }

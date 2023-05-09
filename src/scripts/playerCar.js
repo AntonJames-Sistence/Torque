@@ -12,7 +12,7 @@ class Player {
         this.height = 90;
 
         // speed
-        this.speed = 3;
+        this.speed = 1;
 
         // canvas connection
         this.context = context;
