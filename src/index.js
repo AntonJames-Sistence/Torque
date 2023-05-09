@@ -4,6 +4,8 @@ import Background from './scripts/background';
 
 document.addEventListener('DOMContentLoaded', () => {
     
+//====================================== Get cancas and context =====================================
+    
     // get stats canvas
     const statsScreen = document.getElementById('stats');
     const statsCtx = statsScreen.getContext("2d");
@@ -20,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const rightBkgCtx = rightBkgScreen.getContext("2d");
 
 //====================================================================================================
-
     // pause feature
     // let isPaused = false;
 
@@ -32,12 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let score = 0;
 
     // set up gameSpeed parameter
-    let gameSpeed = 4;
+    let gameSpeed = 0;
 
     // increasing gameSpeed by setting up interval
     setInterval(() => {if(gameSpeed < 10) gameSpeed += 0.25}, 5000); // can be calibrated
 
-//====================================================================================================
+//======================================== Game Stats =================================================
 
     // updating game stats
     function updateStats(){
@@ -49,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // current lives
         statsCtx.fillText(`Lives: ${playerCar.lives}`, 10, 300);
     }
-//====================================================================================================
+//====================================== Create Game Objects/Backgrounds ===============================
 
     // creating player car
     const playerCar = new Player(gameScreen, gameCtx);
@@ -144,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         alert(`Game over, your final score: ${score}`);
                         cancelAnimationFrame(frameId);
+                        
                         // stopGame();
                         // tooglePause();
                         // setInterval(() => {
@@ -267,8 +269,28 @@ pauseMusicBtn.addEventListener(
 
     }
 
-    // start of the game
-    play();
-    
+    //======================================= Greetin Message / Game Start ============================================
 
+    function greetingToggler() {
+        let greeting = document.getElementById("greetings");
+        if (greeting.style.display === "block"){
+            greeting.style.display = "none";
+            // start of the game
+            play();
+        } else {
+            greeting.style.display = "block";
+        }
+    }
+
+    // get button for starting game by ID
+    const startButton = document.getElementById('startGame');
+
+    // add event listener for this button
+    startButton.addEventListener(
+        'click',
+        greetingToggler
+    )
+    
+    // start of the game
+    greetingToggler();
 })

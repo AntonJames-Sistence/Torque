@@ -40,14 +40,14 @@ class Background {
     //================================= Side Background Frames Methods ======================================
 
     updateBack(){
-        this.bkgY += 0.4;
+        this.bkgY += 0.3;
         if (this.bkgY >= 700) {
             this.bkgY = 0;
         };
     }
 
     updateBackSecondFrame(){
-        this.bkgY += 0.4;
+        this.bkgY += 0.3;
         if (this.bkgY >= 0) {
             this.bkgY = -700;
         };

@@ -2,13 +2,8 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
 #stats {
-  background-color: #f25a38;
-  border: 5px solid #F29829;
-}
-
-#support-bar {
-  background-color: #F2AC29;
-  border: 5px solid #F24444;
+  background-color: #F2884B;
+  border: 5px solid #037F8C;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -74,7 +69,7 @@ button {
   color: aliceblue;
   height: 50px;
   width: 100px;
-  border-radius: 10%;
+  border-radius: 20%;
 }
 
 button:hover {
@@ -82,12 +77,36 @@ button:hover {
 }
 
 .music {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
   display: flex;
-  justify-content: end;
-  margin: 20px;
+  flex-direction: column;
+  background-color: #F2884B;
+  border: 5px solid #037F8C;
+}
+
+#greetings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 400px;
+  width: 400px;
+  border-radius: 15%;
+  background-color: #F2884B;
+  padding: 50px;
+  border: 5px solid #037F8C;
+  font-family: "Kalam", cursive;
+  font-size: 22px;
+  color: black;
+}
+
+#startGame {
+  position: absolute;
+  bottom: 20px;
+  left: 40%;
+  align-self: flex-end;
+}
+
+h2 {
+  padding: 10px;
+  font-weight: 900;
 }
