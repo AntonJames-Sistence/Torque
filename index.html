@@ -10,15 +10,45 @@
     <script src="./dist/main.js"></script>
     
     <title>Torque</title>
+    <link rel="icon" type="image/x-icon" href="./resources/x-icon.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Kalam:wght@300&family=Sigmar&display=swap" rel="stylesheet">
   </head>
 
   <body>
     <div id="main">
+
+      <div id="greetings" style="display: none;">
+          <h2><center>Welcome!</center></h2>
+            <h3>
+              Get ready to hit the gas, feel the wind in your hair, and leave your opponents in the dust as you race to victory. 
+              With heart-pumping music and adrenaline-fueled action, this game will take you on a ride of a lifetime.
+              The stakes are high, and the competition is fierce. But you've got what it takes to become the champion. 
+              So strap in, rev up your engines, and get ready to show the world what you're made of. 
+              This is your moment to shine, your chance to prove your worth as the ultimate racer! 
+              <br/>
+              <br/>
+              Are you ready to take on the challenge?
+            </h3>
+        <button id="startGame">Lets go!</button>
+      </div>
+
       <canvas id="stats" height="700px" width="230px"></canvas>
 
+      <canvas id="leftBackgroundPiece"></canvas>
       <canvas id="screen" height="700px" width="500px"></canvas>
+      <canvas id="rightBackgroundPiece"></canvas>
 
-      <canvas id="supportBar" height="700px" width="230px"></canvas>
+      <!-- <canvas id="support-bar" height="700px" width="185px"></canvas> -->
+
+      <div class="music">
+        <button id="playMusic">Play Music</button>
+        <button id="stopMusic">Pause Music</button>
+      </div>
+
+      <div id="finalScore" style="display: none;"></div>
+
     </div>
   </body>
 
