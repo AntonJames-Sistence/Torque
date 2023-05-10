@@ -2,6 +2,8 @@ import Player from './scripts/playerCar';
 import Competitor from './scripts/competitor';
 import Background from './scripts/background';
 import LifeBar from './scripts/life';
+import Speedometer from './scripts/speedometer';
+import Odometer from './scripts/odometer';
 
 document.addEventListener('DOMContentLoaded', () => {
     
@@ -36,15 +38,19 @@ document.addEventListener('DOMContentLoaded', () => {
 //======================================== Game Stats Bar ===============================================
 
     const lifesBar = new LifeBar(statsScreen, statsCtx);
+    const spdmtr = new Speedometer(statsScreen, statsCtx);
+    const odomtr = new Odometer(statsScreen, statsCtx);
 
     // updating game stats
     function updateStats(){
+        // text styling
         statsCtx.font = "20px Arial";
-        // game speed
-        statsCtx.fillText(`Current game speed: ${gameSpeed}`, 10, 100);
+
+        // game speed draw
+        spdmtr.draw(gameSpeed);
 
         // current score
-        statsCtx.fillText(`Your score: ${score}`, 10, 200);
+        odomtr.draw(score);
 
         // current life
         lifesBar.draw(playerCar.life);
@@ -115,11 +121,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if ((keys["ArrowUp"]) && (playerCar.carY > 10)) { 
-                playerCar.carY -= playerCar.speed + (gameSpeed * 0.7); // up move with speed relationship
+                playerCar.carY -= playerCar.speed + (gameSpeed * 0.3); // up move with speed relationship
         }
 
         if ((keys["ArrowDown"]) && (playerCar.carY < playerCar.screen.height-100)) { 
-            playerCar.carY += playerCar.speed + (gameSpeed * 0.7); // down move with speed relationship
+            playerCar.carY += playerCar.speed + (gameSpeed * 1); // down move with speed relationship
         }
 
 //=================================== Competitors and physics =================================================
