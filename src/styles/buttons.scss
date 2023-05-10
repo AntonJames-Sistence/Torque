@@ -9,7 +9,7 @@ button {
 
 button:hover {
     background-color: #ebe03c;
-    border: 1px solid black;
+    border-style: inset;
     color: black;
 }
 
@@ -18,4 +18,21 @@ button:hover {
     bottom: 20px;
     left: 40%;
     align-self: flex-end;
+}
+
+#linkedin, #github {
+    height: 50px;
+    width: 50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-self: flex-end;
+}
+
+#github {
+    background-image: url('../resources/buttons/github.png');
+}
+
+#linkedin{
+    background-image: url('../resources/buttons/linkedin.png');
 }

@@ -215,7 +215,25 @@ pauseMusicBtn.addEventListener(
     }
 )
 
-//====================================================================================================
+//============================================== Links buttons ===================================================
+
+const linkBtn = document.getElementById("linkedin");
+const githubBtn = document.getElementById("github");
+
+linkBtn.addEventListener(
+    'click',
+    () => {
+        window.open("https://www.linkedin.com/in/anton-james-9b5b18275/", "_blank");
+    }
+);
+githubBtn.addEventListener(
+    'click',
+    () => {
+        window.open("https://github.com/AntonJames-Sistence", "_blank");
+    }
+);
+
+//====================================== Key up and Key down listeners ============================================
 
     // add listener for keyDown process
     document.addEventListener(

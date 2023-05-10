@@ -16,6 +16,7 @@ h3 {
 
 #helperBar {
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
     background-color: #1f6723;
     border-right: 5px solid #05c5ed;
@@ -24,4 +25,7 @@ h3 {
     height: 700px;
 }
 
-
+#musicWrap, #linksWrap {
+    display: flex;
+    flex-direction: column;
+}

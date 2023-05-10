@@ -85,7 +85,7 @@ table {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 400px;
+  height: 450px;
   width: 400px;
   border-radius: 5%;
   background-color: #69a937;
@@ -98,7 +98,6 @@ table {
 
 #finalMessage {
   height: 100px;
-  width: 400px;
   border: 5px solid #e55c18;
   font-family: "Kalam";
 }
@@ -123,7 +122,7 @@ button {
 
 button:hover {
   background-color: #ebe03c;
-  border: 1px solid black;
+  border-style: inset;
   color: black;
 }
 
@@ -132,6 +131,23 @@ button:hover {
   bottom: 20px;
   left: 40%;
   align-self: flex-end;
+}
+
+#linkedin, #github {
+  height: 50px;
+  width: 50px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  align-self: flex-end;
+}
+
+#github {
+  background-image: url("../resources/buttons/github.png");
+}
+
+#linkedin {
+  background-image: url("../resources/buttons/linkedin.png");
 }
 
 #main {
@@ -147,10 +163,16 @@ h3 {
 
 #helperBar {
   display: flex;
+  justify-content: space-between;
   flex-direction: column;
   background-color: #1f6723;
   border-right: 5px solid #05c5ed;
   border-bottom: 5px solid #05c5ed;
   border-top: 5px solid #05c5ed;
   height: 700px;
+}
+
+#musicWrap, #linksWrap {
+  display: flex;
+  flex-direction: column;
 }
