@@ -3,7 +3,7 @@ class Competitor {
         // img paramaters with random generator
         const competitorImg = new Image();
         let randImg = Math.floor(Math.random() * 6);
-        competitorImg.src = `resources/car${randImg}.png`;
+        competitorImg.src = `resources/cars_img/car${randImg}.png`;
         this.carImg = competitorImg;
 
         // randomized car position and car size

@@ -1,0 +1,21 @@
+button {
+    background-color: #e55c18;
+    color: gainsboro;
+    font-family: 'Sigmar One';
+    height: 50px;
+    width: 100px;
+    border-radius: 5%;
+}
+
+button:hover {
+    background-color: #ebe03c;
+    border: 1px solid black;
+    color: black;
+}
+
+#startGame, #restartGame {
+    position: absolute;
+    bottom: 20px;
+    left: 40%;
+    align-self: flex-end;
+}

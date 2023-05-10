@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // updating game stats
     function updateStats(){
         // text styling
-        statsCtx.font = "20px Arial";
+        statsCtx.font = "20px Sigmar One";
 
         // game speed draw
         spdmtr.draw(gameSpeed);
@@ -77,15 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // side animation right part
     const rightSideBackground1 = new Background(rightBkgScreen, rightBkgCtx, 0, "resources/rightBackground.png")
     const rightSideBackground2 = new Background(rightBkgScreen, rightBkgCtx, -700, "resources/rightBackground.png")
-
-//====================================== Initial Background ==============================================
-// doesnt work
-// leftSideBackground1.drawBackground();
-// leftSideBackground2.drawBackground();
-// rightSideBackground1.drawBackground();
-// rightSideBackground2.drawBackground();
-// roadBackground1.drawBackground();
-// roadBackground2.drawBackground();
 
 // ===================================== Main Game Loop Logic ============================================
 
@@ -171,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 // randomize competitor car img
                 let randImg = Math.floor(Math.random() * 6);
-                currentCar.carImg.src = `resources/car${randImg}.png`;
+                currentCar.carImg.src = `resources/cars_img/car${randImg}.png`;
                 currentCar.crashPointFrame = 0;
                 currentCar.destroyed = false; 
                 // randomize competitor position
@@ -280,6 +271,7 @@ pauseMusicBtn.addEventListener(
     function greetingToggler() {
         let greetingContainer = document.getElementById("greetings-container");
         let greeting = document.getElementById("greetings");
+
         if (greeting.style.display === "block"){
             greeting.style.display = "none";
             greetingContainer.style.display = "none";
