@@ -60,7 +60,7 @@ table {
 }
 
 #stats {
-  background-color: #F2884B;
+  background-color: #F2D98D;
   border: 5px solid #037F8C;
 }
 
@@ -79,7 +79,7 @@ button:hover {
 .music {
   display: flex;
   flex-direction: column;
-  background-color: #F2884B;
+  background-color: #F2D98D;
   border: 5px solid #037F8C;
 }
 
@@ -104,12 +104,18 @@ button:hover {
   height: 400px;
   width: 400px;
   border-radius: 15%;
-  background-color: #F2884B;
+  background-color: #F2D98D;
   padding: 50px;
   border: 5px solid #037F8C;
   font-family: "Kalam", cursive;
   font-size: 22px;
   color: black;
+}
+
+#finalMessage {
+  height: 100px;
+  width: 400px;
+  border-radius: 20%;
 }
 
 #startGame, #restartGame {
@@ -122,11 +128,6 @@ button:hover {
 h3 {
   padding: 10px;
   font-weight: 900;
-}
-
-h2 {
-  padding-top: 0px;
-  padding-bottom: 17px;
 }
 
 #arrows {

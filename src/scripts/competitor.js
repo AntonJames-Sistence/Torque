@@ -53,7 +53,7 @@ class Competitor {
             this.carImg = crashImg;
 
             // change car image according to logic above
-            this.context.drawImage(this.carImg, this.carX-20, this.carY, 100, 100); // hardcoded crash image
+            this.context.drawImage(this.carImg, this.carX-70, this.carY-40, 200, 200); // hardcoded crash image
 
             this.crashPointFrame += 1;
         } else {

@@ -19,7 +19,7 @@ class Player {
         this.screen = screen;
 
         // lives and invincible status
-        this.lives = 3;
+        this.life = 3;
         this.invincible = false;
         
     }

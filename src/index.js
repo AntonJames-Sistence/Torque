@@ -1,7 +1,7 @@
 import Player from './scripts/playerCar';
 import Competitor from './scripts/competitor';
 import Background from './scripts/background';
-import LifeBar from './scripts/lifeBar';
+import LifeBar from './scripts/life';
 
 document.addEventListener('DOMContentLoaded', () => {
     
@@ -35,18 +35,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //======================================== Game Stats Bar ===============================================
 
-    const lifes = new LifeBar(statsScreen, statsCtx);
+    const lifesBar = new LifeBar(statsScreen, statsCtx);
 
     // updating game stats
     function updateStats(){
         statsCtx.font = "20px Arial";
         // game speed
         statsCtx.fillText(`Current game speed: ${gameSpeed}`, 10, 100);
+
         // current score
         statsCtx.fillText(`Your score: ${score}`, 10, 200);
-        // current lives
-        statsCtx.fillText(`Lives: ${playerCar.lives}`, 10, 300);
-        lifes.draw();
+
+        // current life
+        lifesBar.draw(playerCar.life);
     }
 //====================================== Create Game Objects/Backgrounds ===============================
 
@@ -134,12 +135,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentCar.carX >= playerCar.carX-50 &&
                     currentCar.carX <= playerCar.carX+50 ){
 
-                    if ((playerCar.lives > 0)){
+                    if ((playerCar.life > 0)){
                         // check if players car is in invincible state
                         if(playerCar.invincible === false){
-                            // logic to prevent from loosing all lives in the same crash
+                            // logic to prevent from loosing all life in the same crash
                             playerCar.invincible = true;
-                            playerCar.lives--;
+                            playerCar.life--;
                             gameSpeed = 1;
                             // invincibility timer
                             setTimeout(() => {
@@ -183,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function resetGameParams() {
     score = 0;
     gameSpeed = 1;
-    playerCar.lives = 3;
+    playerCar.life = 3;
     playerCar.carX = 270;
     playerCar.carY = 600;
     for(let i = 0; i < competitors.length; i++){
@@ -306,6 +307,8 @@ pauseMusicBtn.addEventListener(
         if (finalMessage.style.display === "block"){
             finalMessage.style.display = "none";
             finalMessageContainer.style.display = "none";
+            let fMes = finalMessage.querySelector("h3");
+            finalMessage.removeChild(fMes);
             // reStart of the game
             resetGameParams();
             play();
