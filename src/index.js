@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         spdmtr.draw(gameSpeed);
 
         // current score
-        odomtr.draw(score);
+        odomtr.draw(score, gameSpeed);
 
         // current life
         lifesBar.draw(playerCar.life);
@@ -322,7 +322,7 @@ pauseMusicBtn.addEventListener(
             finalMessage.style.display = "block";
             finalMessageContainer.style.display = "block";
             let fMes = document.createElement("h3");
-            fMes.textContent = `Game over! Your score is: ${score}`;
+            fMes.textContent = `Thank you for playing! Your score is: ${score}`;
             finalMessage.appendChild(fMes);
         }
     }

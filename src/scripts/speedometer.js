@@ -33,9 +33,10 @@ class Speedometer {
         };
 
         // game speed render and speedometer render
-        this.context.drawImage(this.speedImg, 23, 25, 180, 180);
-        this.context.drawImage(arrow, 50, 50, 130, 130);
-        this.context.fillText(`${gameSpeed * 100 + this.frame}`, 97, 180); // need better speed representation
+        this.context.drawImage(this.speedImg, 23, 50, 180, 180);
+        this.context.drawImage(arrow, 50, 75, 130, 130);
+        this.context.fillText(`${gameSpeed * 100 - 100}`, 97, 205); // need better speed representation
+        this.context.fillText("Speed", 85, 40); 
         // frame counter
         this.frame += 1;
     }
