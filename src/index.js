@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let score = 0;
 
     // set up gameSpeed parameter
-    let gameSpeed = 1;
+    let gameSpeed;
 
     // increasing gameSpeed by setting up interval
     setInterval(() => { if(gameSpeed < 10) gameSpeed += 1 }, 4000); // can be calibrated

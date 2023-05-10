@@ -11,13 +11,14 @@ class Odometer {
     }
 
     draw(score){
-        this.context.drawImage(this.speedImg, 0, 250, 220, 220);
+        // arrow animation
 
-        // game odometer render
+
+        // game odometer and score render
         this.context.fillText(`Current score: ${score}`, 20, 450);
-
+        this.context.drawImage(this.speedImg, 0, 250, 220, 220);
         // frame counter
-        this.frame++
+        this.frame += 1;
     }
 }
 
