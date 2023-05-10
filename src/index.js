@@ -199,7 +199,7 @@ music.src = "resources/speeding.mp3";
 
 // get music buttons
 const playMusicBtn = document.getElementById("playMusic");
-const pauseMusicBtn = document.getElementById("stopMusic");
+const pauseMusicBtn = document.getElementById("pauseMusic");
 
 // add event listeners
 playMusicBtn.addEventListener(
