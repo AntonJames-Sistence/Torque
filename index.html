@@ -19,19 +19,28 @@
   <body>
     <div id="main">
 
-      <div id="greetings" style="display: none;">
-          <h2><center>Welcome!</center></h2>
-            <h3>
-              Get ready to hit the gas, feel the wind in your hair, and leave your opponents in the dust as you race to victory. 
-              With heart-pumping music and adrenaline-fueled action, this game will take you on a ride of a lifetime.
-              The stakes are high, and the competition is fierce. But you've got what it takes to become the champion. 
-              So strap in, rev up your engines, and get ready to show the world what you're made of. 
-              This is your moment to shine, your chance to prove your worth as the ultimate racer! 
-              <br/>
-              <br/>
-              Are you ready to take on the challenge?
-            </h3>
-        <button id="startGame">Lets go!</button>
+      <div id="greetings-container"></div>
+
+      <div id="greetings">
+        <h2><center>Welcome!</center></h2>
+
+          <div id="instructions">
+            <img id="arrows" src="/resources/arrows.png">
+              <h3>
+                1. Use arrows to move your car
+                <br>
+                2. Hitting other cars will remove your lives
+                <br>
+                3. Game speed increasing with time
+                <br>
+                4. Hit points displeyed on the left bar
+              </h3>
+          </div>
+
+          <!-- <h3>
+            Are you ready to take on the challenge?
+          </h3> -->
+        <button id="startGame">Gas!</button>
       </div>
 
       <canvas id="stats" height="700px" width="230px"></canvas>
@@ -47,7 +56,9 @@
         <button id="stopMusic">Pause Music</button>
       </div>
 
-      <div id="finalScore" style="display: none;"></div>
+      <div id="finalMessage" style="display: none;">
+        <button id="restartGame">Play again!</button>
+      </div>
 
     </div>
   </body>

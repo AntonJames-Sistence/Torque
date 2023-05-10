@@ -1,11 +1,6 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
-#stats {
-  background-color: #F2884B;
-  border: 5px solid #037F8C;
-}
-
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -64,6 +59,11 @@ table {
   display: flex;
 }
 
+#stats {
+  background-color: #F2D98D;
+  border: 5px solid #037F8C;
+}
+
 button {
   background-color: #F24444;
   color: aliceblue;
@@ -79,11 +79,24 @@ button:hover {
 .music {
   display: flex;
   flex-direction: column;
-  background-color: #F2884B;
+  background-color: #F2D98D;
   border: 5px solid #037F8C;
 }
 
-#greetings {
+#greetings-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  opacity: 0.85;
+}
+
+#greetings, #finalMessage {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -91,7 +104,7 @@ button:hover {
   height: 400px;
   width: 400px;
   border-radius: 15%;
-  background-color: #F2884B;
+  background-color: #F2D98D;
   padding: 50px;
   border: 5px solid #037F8C;
   font-family: "Kalam", cursive;
@@ -99,14 +112,29 @@ button:hover {
   color: black;
 }
 
-#startGame {
+#finalMessage {
+  height: 100px;
+  width: 400px;
+  border-radius: 20%;
+}
+
+#startGame, #restartGame {
   position: absolute;
   bottom: 20px;
   left: 40%;
   align-self: flex-end;
 }
 
-h2 {
+h3 {
   padding: 10px;
   font-weight: 900;
+}
+
+#arrows {
+  height: 100px;
+  margin: 10px;
+}
+
+#instructions {
+  margin-top: 20px;
 }

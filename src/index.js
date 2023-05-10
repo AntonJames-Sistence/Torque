@@ -1,6 +1,7 @@
 import Player from './scripts/playerCar';
 import Competitor from './scripts/competitor';
 import Background from './scripts/background';
+import LifeBar from './scripts/life';
 
 document.addEventListener('DOMContentLoaded', () => {
     
@@ -21,34 +22,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const rightBkgScreen = document.getElementById('rightBackgroundPiece');
     const rightBkgCtx = rightBkgScreen.getContext("2d");
 
-//====================================================================================================
-    // pause feature
-    // let isPaused = false;
-
-    // function tooglePause() {
-    //     isPaused = true;
-    // }
+//======================================= Score and Game speed setters ===============================
 
     // score
     let score = 0;
 
     // set up gameSpeed parameter
-    let gameSpeed = 0;
+    let gameSpeed = 1;
 
     // increasing gameSpeed by setting up interval
-    setInterval(() => {if(gameSpeed < 10) gameSpeed += 0.25}, 5000); // can be calibrated
+    setInterval(() => { if(gameSpeed < 10) gameSpeed += 1 }, 4000); // can be calibrated
 
-//======================================== Game Stats =================================================
+//======================================== Game Stats Bar ===============================================
+
+    const lifesBar = new LifeBar(statsScreen, statsCtx);
 
     // updating game stats
     function updateStats(){
         statsCtx.font = "20px Arial";
         // game speed
         statsCtx.fillText(`Current game speed: ${gameSpeed}`, 10, 100);
+
         // current score
         statsCtx.fillText(`Your score: ${score}`, 10, 200);
-        // current lives
-        statsCtx.fillText(`Lives: ${playerCar.lives}`, 10, 300);
+
+        // current life
+        lifesBar.draw(playerCar.life);
     }
 //====================================== Create Game Objects/Backgrounds ===============================
 
@@ -73,7 +72,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const rightSideBackground1 = new Background(rightBkgScreen, rightBkgCtx, 0, "resources/rightBackground.png")
     const rightSideBackground2 = new Background(rightBkgScreen, rightBkgCtx, -700, "resources/rightBackground.png")
 
-// ===================================================================================================
+//====================================== Initial Background ==============================================
+// doesnt work
+// leftSideBackground1.drawBackground();
+// leftSideBackground2.drawBackground();
+// rightSideBackground1.drawBackground();
+// rightSideBackground2.drawBackground();
+// roadBackground1.drawBackground();
+// roadBackground2.drawBackground();
+
+// ===================================== Main Game Loop Logic ============================================
 
     // keys object, allow to store info about what keys are currently pressed
     const keys = {};
@@ -99,22 +107,22 @@ document.addEventListener('DOMContentLoaded', () => {
         roadBackground2.drawBackground();
 
         if ((keys["ArrowRight"]) && (playerCar.carX < (playerCar.screen.width - 75))) { 
-                playerCar.carX += playerCar.speed + gameSpeed; // right move with speed relationship
+                playerCar.carX += playerCar.speed + (gameSpeed * 0.7); // right move with speed relationship
         }
 
         if ((keys["ArrowLeft"]) && (playerCar.carX > 20)) { 
-                playerCar.carX -= playerCar.speed + gameSpeed; // left move with speed relationship
+                playerCar.carX -= playerCar.speed + (gameSpeed * 0.7); // left move with speed relationship
         }
 
         if ((keys["ArrowUp"]) && (playerCar.carY > 10)) { 
-                playerCar.carY -= playerCar.speed + gameSpeed; // up move with speed relationship
+                playerCar.carY -= playerCar.speed + (gameSpeed * 0.7); // up move with speed relationship
         }
 
         if ((keys["ArrowDown"]) && (playerCar.carY < playerCar.screen.height-100)) { 
-            playerCar.carY += playerCar.speed + gameSpeed; // down move with speed relationship
+            playerCar.carY += playerCar.speed + (gameSpeed * 0.7); // down move with speed relationship
         }
 
-//====================================================================================================
+//=================================== Competitors and physics =================================================
 
         for(let i = 0; i < competitors.length; i++){
             let currentCar = competitors[i];
@@ -127,31 +135,28 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentCar.carX >= playerCar.carX-50 &&
                     currentCar.carX <= playerCar.carX+50 ){
 
-                    if ((playerCar.lives > 0)){
+                    if ((playerCar.life > 0)){
                         // check if players car is in invincible state
                         if(playerCar.invincible === false){
-                            // logic to prevent from loosing all lives in the same crash
+                            // logic to prevent from loosing all life in the same crash
                             playerCar.invincible = true;
-                            playerCar.lives--;
+                            playerCar.life--;
+                            gameSpeed = 1;
                             // invincibility timer
                             setTimeout(() => {
                             playerCar.invincible = false;
                             }, 3000);
                         }
 
+                        // logic after crash happens
+                        currentCar.destroyed = true;
+                        currentCar.carY += currentCar.speed + gameSpeed;
                         currentCar.drive();
                     } else {
-                        currentCar.drive(); // require this car frame to keep it on the screen
-
-                        alert(`Game over, your final score: ${score}`);
+                        // stop game
                         cancelAnimationFrame(frameId);
-                        
-                        // stopGame();
-                        // tooglePause();
-                        // setInterval(() => {
-                        //     isPaused = false;
-                        // }, 3000);
-                        // gameReset();
+                        // call final message
+                        finalScoreToggler();
                     }      
                 } else {
                     currentCar.carY += currentCar.speed + gameSpeed; // speed relationships
@@ -160,7 +165,9 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 // randomize competitor car img
                 let randImg = Math.floor(Math.random() * 6);
-                currentCar.carImg.src = `resources/car${randImg}.png`; 
+                currentCar.carImg.src = `resources/car${randImg}.png`;
+                currentCar.crashPointFrame = 0;
+                currentCar.destroyed = false; 
                 // randomize competitor position
                 currentCar.randomizeCarPos();
                 // randomize competitor car speed
@@ -172,26 +179,19 @@ document.addEventListener('DOMContentLoaded', () => {
         playerCar.drive();
     }
 
-//====================================================================================================
+//========================== Reset parameters for Restarting the game ================================
 
-// function gameReset(){
-//     playerCar.lives = 3;
-//     score = 0;
-//     gameSpeed = 1;
-//     for(let i = 0; i < competitors.length; i++){
-//         competitors[i].randomizeCarPos();
-//     }
-// }
-
-//====================================================================================================
-
-
-
-
-
-
-
-
+function resetGameParams() {
+    score = 0;
+    gameSpeed = 1;
+    playerCar.life = 3;
+    playerCar.carX = 270;
+    playerCar.carY = 600;
+    for(let i = 0; i < competitors.length; i++){
+        competitors[i].randomizeCarPos();
+        competitors[i].speed = 0;
+    }
+}
 
 //===================================== Music Feature ================================================
     
@@ -250,7 +250,7 @@ pauseMusicBtn.addEventListener(
         // if (isPaused === false){
 
         // score increasement based on game speed
-        score += (1 * gameSpeed);
+        score += Math.floor(1 * gameSpeed);
 
         // clear left and right background canvases before next frame
         leftBkgCtx.clearRect(0, 0, leftBkgScreen.width, leftBkgScreen.height)
@@ -272,13 +272,17 @@ pauseMusicBtn.addEventListener(
     //======================================= Greetin Message / Game Start ============================================
 
     function greetingToggler() {
+        let greetingContainer = document.getElementById("greetings-container");
         let greeting = document.getElementById("greetings");
         if (greeting.style.display === "block"){
             greeting.style.display = "none";
+            greetingContainer.style.display = "none";
             // start of the game
+            resetGameParams(); // fix bag with speed on background
             play();
         } else {
             greeting.style.display = "block";
+            greetingContainer.style.display = "block";
         }
     }
 
@@ -289,8 +293,39 @@ pauseMusicBtn.addEventListener(
     startButton.addEventListener(
         'click',
         greetingToggler
-    )
+    );
     
     // start of the game
     greetingToggler();
+
+    //======================================= Final Score Message / End Game ============================================
+
+    function finalScoreToggler() {
+        let finalMessage = document.getElementById("finalMessage");
+        let finalMessageContainer = document.getElementById("greetings-container");
+
+        if (finalMessage.style.display === "block"){
+            finalMessage.style.display = "none";
+            finalMessageContainer.style.display = "none";
+            let fMes = finalMessage.querySelector("h3");
+            finalMessage.removeChild(fMes);
+            // reStart of the game
+            resetGameParams();
+            play();
+        } else {
+            finalMessage.style.display = "block";
+            finalMessageContainer.style.display = "block";
+            let fMes = document.createElement("h3");
+            fMes.textContent = `Game over! Your score is: ${score}`;
+            finalMessage.appendChild(fMes);
+        }
+    }
+
+    const restartButton = document.getElementById('restartGame');
+
+    restartButton.addEventListener(
+        'click',
+        finalScoreToggler
+    );
+
 })

@@ -18,11 +18,48 @@ class Competitor {
         // canvas parameters 
         this.context = context;
         this.screen = screen;
+
+        // crash implementation
+        this.destroyed = false;
+        this.crashPointFrame = 0;
     }
 
     // simple draw
     drive(){
-        this.context.drawImage(this.carImg, this.carX, this.carY, this.width, this.height);
+        // change img in case of crash
+        if (this.destroyed){
+            let crashImg = new Image();
+
+            // work with crash animation frames
+            if(this.crashPointFrame < 8){
+                crashImg.src = 'resources/crashAnimation/crash0.png';
+            } else if((this.crashPointFrame > 7)&&(this.crashPointFrame < 15)){
+                crashImg.src = 'resources/crashAnimation/crash1.png';
+            } else if((this.crashPointFrame > 14)&&(this.crashPointFrame < 22)){
+                crashImg.src = 'resources/crashAnimation/crash2.png';
+            } else if((this.crashPointFrame > 21)&&(this.crashPointFrame < 29)){
+                crashImg.src = 'resources/crashAnimation/crash3.png';
+            } else if((this.crashPointFrame > 28)&&(this.crashPointFrame < 36)){
+                crashImg.src = 'resources/crashAnimation/crash4.png';
+            } else if((this.crashPointFrame > 35)&&(this.crashPointFrame < 43)){
+                crashImg.src = 'resources/crashAnimation/crash5.png';
+            } else if((this.crashPointFrame > 42)&&(this.crashPointFrame < 50)){
+                crashImg.src = 'resources/crashAnimation/crash6.png';
+            } else if((this.crashPointFrame > 49)&&(this.crashPointFrame < 57)){
+                crashImg.src = 'resources/crashAnimation/crash7.png';
+            } else {
+                this.carY = 800;
+            }
+            this.carImg = crashImg;
+
+            // change car image according to logic above
+            this.context.drawImage(this.carImg, this.carX-70, this.carY-40, 200, 200); // hardcoded crash image
+
+            this.crashPointFrame += 1;
+        } else {
+            this.context.drawImage(this.carImg, this.carX, this.carY, this.width, this.height);
+        };
+
     }
 
     randomizeCarPos(){

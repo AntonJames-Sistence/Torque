@@ -6,20 +6,20 @@ class Player {
         this.carImg = playerCarImg;
 
         // players car starting position and size
-        this.carX = 320;
+        this.carX = 270;
         this.carY = 600;
         this.width = 55;
         this.height = 90;
 
         // speed
-        this.speed = 3;
+        this.speed = 1;
 
         // canvas connection
         this.context = context;
         this.screen = screen;
 
         // lives and invincible status
-        this.lives = 3;
+        this.life = 3;
         this.invincible = false;
         
     }

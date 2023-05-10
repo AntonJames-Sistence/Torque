@@ -1,10 +1,15 @@
-@import "./styles/canvas.scss";
+// @import "./styles/canvas.scss";
 @import "./styles/reset.scss";
 
 #main {
     display: flex;
     // position: relative;
     // justify-content: center;
+}
+
+#stats {
+    background-color: #F2D98D;
+    border: 5px solid #037F8C;
 }
 
 button {
@@ -24,11 +29,24 @@ button:hover {
     flex-direction: column;
     // justify-content: end;
     // margin: 20px;
-    background-color: #F2884B;
+    background-color: #F2D98D;
     border: 5px solid #037F8C;
 }
 
-#greetings {
+#greetings-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    opacity: 0.85;
+  }
+
+#greetings, #finalMessage {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -36,7 +54,7 @@ button:hover {
     height: 400px;
     width: 400px;
     border-radius: 15%;
-    background-color: #F2884B;
+    background-color: #F2D98D;
     padding: 50px;
     border: 5px solid #037F8C;
     font-family: 'Kalam', cursive;
@@ -44,15 +62,36 @@ button:hover {
     color: black;
 }
 
-#startGame {
+#finalMessage {
+    height: 100px;
+    width: 400px;
+    border-radius: 20%;
+}
+
+#startGame, #restartGame {
     position: absolute;
     bottom: 20px;
     left: 40%;
     align-self: flex-end;
-    
 }
 
-h2 {
+h3 {
     padding: 10px;
     font-weight: 900;
+}
+
+// h2 {
+//     padding-top: 0px;
+//     padding-bottom: 17px;
+// }
+
+#arrows {
+    height: 100px;
+    margin: 10px;
+}
+
+#instructions {
+    // display: flex;
+    // flex-direction: column;
+    margin-top: 20px;
 }
