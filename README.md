@@ -55,5 +55,6 @@
 * Expanded Collectible Items: Introduce a wider variety of items for players to collect during the game, providing additional challenges, rewards, and power-ups to enhance gameplay dynamics.
 * Pause Functionality: Implement a pause feature that allows players to temporarily halt the game, providing flexibility and convenience without losing progress. This feature will enable players to take breaks or attend to other tasks while retaining their current game state.
 * Crash sound effects, effects for collecting items. These sound effects will heighten the intensity of the gameplay and provide auditory feedback and adding an extra layer of realism and excitement.
+* Implement High Score Local Storage System: Create a local storage mechanism that stores and retrieves the highest score achieved by the player. Whenever the player achieves a new high score, update the local storage value accordingly. Retrieve the stored high score when the game starts and display it prominently to motivate the player to surpass their previous record.
 
 <!-- ## CC Licensing: -->
