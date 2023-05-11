@@ -31,21 +31,21 @@ class Competitor {
             let crashImg = new Image();
 
             // work with crash animation frames
-            if(this.crashPointFrame < 8){
+            if(this.crashPointFrame < 6){
                 crashImg.src = 'resources/crashAnimation/crash0.png';
-            } else if((this.crashPointFrame > 7)&&(this.crashPointFrame < 15)){
+            } else if((this.crashPointFrame > 5)&&(this.crashPointFrame < 11)){
                 crashImg.src = 'resources/crashAnimation/crash1.png';
-            } else if((this.crashPointFrame > 14)&&(this.crashPointFrame < 22)){
+            } else if((this.crashPointFrame > 10)&&(this.crashPointFrame < 16)){
                 crashImg.src = 'resources/crashAnimation/crash2.png';
-            } else if((this.crashPointFrame > 21)&&(this.crashPointFrame < 29)){
+            } else if((this.crashPointFrame > 15)&&(this.crashPointFrame < 21)){
                 crashImg.src = 'resources/crashAnimation/crash3.png';
-            } else if((this.crashPointFrame > 28)&&(this.crashPointFrame < 36)){
+            } else if((this.crashPointFrame > 20)&&(this.crashPointFrame < 26)){
                 crashImg.src = 'resources/crashAnimation/crash4.png';
-            } else if((this.crashPointFrame > 35)&&(this.crashPointFrame < 43)){
+            } else if((this.crashPointFrame > 25)&&(this.crashPointFrame < 31)){
                 crashImg.src = 'resources/crashAnimation/crash5.png';
-            } else if((this.crashPointFrame > 42)&&(this.crashPointFrame < 50)){
+            } else if((this.crashPointFrame > 30)&&(this.crashPointFrame < 36)){
                 crashImg.src = 'resources/crashAnimation/crash6.png';
-            } else if((this.crashPointFrame > 49)&&(this.crashPointFrame < 57)){
+            } else if((this.crashPointFrame > 35)&&(this.crashPointFrame < 41)){
                 crashImg.src = 'resources/crashAnimation/crash7.png';
             } else {
                 this.carY = 800;

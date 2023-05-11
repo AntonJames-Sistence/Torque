@@ -234,7 +234,9 @@ function resetGameParams() {
     
 // creating new audio object to play music
 let music = new Audio();
-music.src = "resources/speeding.mp3";
+music.src = "resources/sounds/hotRoad.ogg";
+
+// crash sound
 
 // get music buttons
 const playMusicBtn = document.getElementById("playMusic");

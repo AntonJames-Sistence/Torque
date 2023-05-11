@@ -20,21 +20,21 @@ class Coin{
         let coinImg = new Image();
 
         // coin spinning animation
-        if(this.frame < 11){
+        if(this.frame < 6){
             coinImg.src = 'resources/coins_img/frame0.png';
-        } else if((this.frame > 10)&&(this.frame < 21)){
+        } else if((this.frame > 5)&&(this.frame < 11)){
             coinImg.src = 'resources/coins_img/frame1.png';
-        } else if((this.frame > 20)&&(this.frame < 31)){
+        } else if((this.frame > 10)&&(this.frame < 16)){
             coinImg.src = 'resources/coins_img/frame2.png';
-        } else if((this.frame > 30)&&(this.frame < 41)){
+        } else if((this.frame > 15)&&(this.frame < 21)){
             coinImg.src = 'resources/coins_img/frame3.png';
-        } else if((this.frame > 40)&&(this.frame < 51)){
+        } else if((this.frame > 20)&&(this.frame < 26)){
             coinImg.src = 'resources/coins_img/frame4.png';
-        } else if((this.frame > 50)&&(this.frame < 61)){
+        } else if((this.frame > 25)&&(this.frame < 31)){
             coinImg.src = 'resources/coins_img/frame5.png';
-        } else if((this.frame > 60)&&(this.frame < 71)){
+        } else if((this.frame > 30)&&(this.frame < 36)){
             coinImg.src = 'resources/coins_img/frame6.png';
-        } else if((this.frame > 70)&&(this.frame < 81)){
+        } else if((this.frame > 35)&&(this.frame < 41)){
             coinImg.src = 'resources/coins_img/frame7.png';
         };
 
@@ -42,7 +42,7 @@ class Coin{
         this.context.drawImage(coinImg, this.coinX, this.coinY, this.width, this.height);
 
         // check if animation made full circle
-        if (this.frame >= 80){
+        if (this.frame >= 40){
             this.frame = 0;
         }
             
