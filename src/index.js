@@ -268,7 +268,7 @@ linkBtn.addEventListener(
 githubBtn.addEventListener(
     'click',
     () => {
-        window.open("https://github.com/AntonJames-Sistence", "_blank");
+        window.open("https://github.com/AntonJames-Sistence/Torque.git", "_blank");
     }
 );
 
