@@ -5,6 +5,7 @@ button {
     height: 50px;
     width: 100px;
     border-radius: 5%;
+    cursor: pointer;
 }
 
 button:hover {
@@ -27,6 +28,7 @@ button:hover {
     background-repeat: no-repeat;
     background-position: center;
     align-self: flex-end;
+    
 }
 
 #github {
