@@ -8,6 +8,7 @@
 
 ![Torque Wireframe](./resources/readme/wireframe.png)
 
+
 * The main game screen features a dynamic canvas that constantly updates its graphics based on the player's input and the game's logic, delivering an immersive gaming experience.
 * The game parameters bar provides vital information such as hit points, score, and game speed, giving players real-time feedback on their progress and performance.
 * Located on the right side of the screen, the navigation bar includes a music control bar to manage the in-game audio, as well as convenient links to my LinkedIn profile and the GitHub repository for this project.
