@@ -1,5 +1,5 @@
 class Competitor {
-    constructor(screen, context){
+    constructor(canvas, context){
         // img paramaters with random generator
         const competitorImg = new Image();
         let randImg = Math.floor(Math.random() * 6);
@@ -7,7 +7,7 @@ class Competitor {
         this.carImg = competitorImg;
 
         // randomized car position and car size
-        this.carX = Math.random() * (screen.width-65 - 10) + 10; // add randomized x pos
+        this.carX = Math.random() * (canvas.width-65 - 10) + 10; // add randomized x pos
         this.carY = Math.random() * (-200 - 100) -200; // add random y pos
         this.width = 55;
         this.height = 90;
@@ -17,7 +17,7 @@ class Competitor {
 
         // canvas parameters 
         this.context = context;
-        this.screen = screen;
+        this.canvas = canvas;
 
         // crash implementation
         this.destroyed = false;
@@ -63,7 +63,7 @@ class Competitor {
     }
 
     randomizeCarPos(){
-        this.carX = Math.random() * (this.screen.width-75 - 20) + 20; // can be calibrated
+        this.carX = Math.random() * (this.canvas.width-75 - 20) + 20; // can be calibrated
         this.carY = Math.random() * (-200 - 100) -200;
     }
 }
