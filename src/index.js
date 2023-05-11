@@ -4,6 +4,7 @@ import Background from './scripts/background';
 import LifeBar from './scripts/life';
 import Speedometer from './scripts/speedometer';
 import Odometer from './scripts/odometer';
+import Coin from './scripts/coin';
 
 document.addEventListener('DOMContentLoaded', () => {
     
@@ -67,16 +68,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // main road backgroun
-    const roadBackground1 = new Background(gameScreen, gameCtx, 0, "resources/roadBackground.png");
-    const roadBackground2 = new Background(gameScreen, gameCtx, -700, "resources/roadBackground.png");
+    const roadBackground1 = new Background(gameScreen, gameCtx, 0, "resources/backgrounds/roadBackground.png");
+    const roadBackground2 = new Background(gameScreen, gameCtx, -700, "resources/backgrounds/roadBackground.png");
 
     // side animation left part
-    const leftSideBackground1 = new Background(leftBkgScreen, leftBkgCtx, 0, "resources/leftBackground.jpg")
-    const leftSideBackground2 = new Background(leftBkgScreen, leftBkgCtx, -700, "resources/leftBackground.jpg")
+    const leftSideBackground1 = new Background(leftBkgScreen, leftBkgCtx, 0, "resources/backgrounds/leftBackground.jpg")
+    const leftSideBackground2 = new Background(leftBkgScreen, leftBkgCtx, -700, "resources/backgrounds/leftBackground.jpg")
 
     // side animation right part
-    const rightSideBackground1 = new Background(rightBkgScreen, rightBkgCtx, 0, "resources/rightBackground.png")
-    const rightSideBackground2 = new Background(rightBkgScreen, rightBkgCtx, -700, "resources/rightBackground.png")
+    const rightSideBackground1 = new Background(rightBkgScreen, rightBkgCtx, 0, "resources/backgrounds/rightBackground.png")
+    const rightSideBackground2 = new Background(rightBkgScreen, rightBkgCtx, -700, "resources/backgrounds/rightBackground.png")
+
+// ==================================== Coins Feature ====================================================
+
+    // creating coins
+    const coins = [];
+    for (let i = 0; i < 4; i++){
+        coins.push(new Coin(gameScreen, gameCtx));
+    }
 
 // ===================================== Main Game Loop Logic ============================================
 
@@ -103,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         roadBackground1.drawBackground();
         roadBackground2.drawBackground();
 
-        if ((keys["ArrowRight"]) && (playerCar.carX < (playerCar.screen.width - 75))) { 
+        if ((keys["ArrowRight"]) && (playerCar.carX < (playerCar.canvas.width - 75))) { 
                 playerCar.carX += playerCar.speed + (gameSpeed * 0.7); // right move with speed relationship
         }
 
@@ -115,17 +124,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 playerCar.carY -= playerCar.speed + (gameSpeed * 0.3); // up move with speed relationship
         }
 
-        if ((keys["ArrowDown"]) && (playerCar.carY < playerCar.screen.height-100)) { 
+        if ((keys["ArrowDown"]) && (playerCar.carY < playerCar.canvas.height-100)) { 
             playerCar.carY += playerCar.speed + (gameSpeed * 1); // down move with speed relationship
         }
 
-//=================================== Competitors and physics =================================================
+//=================================== Game physics =================================================
 
+        // competetors collision detection and logic
         for(let i = 0; i < competitors.length; i++){
             let currentCar = competitors[i];
 
             // check if competitor car is inside main screen
-            if (currentCar.carY < currentCar.screen.height){
+            if (currentCar.carY < currentCar.canvas.height){
                 // check if competitor car hits player car
                 if ( currentCar.carY >= playerCar.carY-85 &&
                     currentCar.carY <= playerCar.carY+85 &&
@@ -172,6 +182,32 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        // coin collection logic
+        for (let i = 0; i < coins.length; i++){
+            let currentCoin = coins[i];
+
+            // check if coins outside main canvas so they can be generated again
+            if (currentCoin.coinY > currentCoin.canvas.height){
+                currentCoin.randomizeCoinPos();
+            } else {
+                // collection logic
+                if ( currentCoin.coinY >= playerCar.carY - 55 &&
+                    currentCoin.coinY <= playerCar.carY + 55 &&
+                    currentCoin.coinX >= playerCar.carX - 55 &&
+                    currentCoin.coinX <= playerCar.carX + 55 
+                    ){
+                        score += 1000;
+                        currentCoin.randomizeCoinPos();
+                        currentCoin.frame = 0;
+
+                } else {
+                    currentCoin.coinY += gameSpeed + 3;
+                    currentCoin.draw();
+                }
+            }
+
+        }
+
         // draw players car
         playerCar.drive();
     }
@@ -188,18 +224,21 @@ function resetGameParams() {
         competitors[i].randomizeCarPos();
         competitors[i].speed = 0;
     }
+    for(let j = 0; j < coins.length; j++){
+        coins[j].randomizeCoinPos();
+        coins[j].frame = 0;
+    }
 }
 
 //===================================== Music Feature ================================================
     
 // creating new audio object to play music
 let music = new Audio();
-// source
 music.src = "resources/speeding.mp3";
 
 // get music buttons
 const playMusicBtn = document.getElementById("playMusic");
-const pauseMusicBtn = document.getElementById("stopMusic");
+const pauseMusicBtn = document.getElementById("pauseMusic");
 
 // add event listeners
 playMusicBtn.addEventListener(
@@ -250,7 +289,7 @@ githubBtn.addEventListener(
         }
     );
 
-//====================================================================================================
+//====================================== Recursive call animation frame logic ===================================================
     
     // set animation frameId for purpose of stopping the game
     let frameId;

@@ -85,7 +85,7 @@ table {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 450px;
+  height: auto;
   width: 400px;
   border-radius: 5%;
   background-color: #69a937;
@@ -133,7 +133,7 @@ button:hover {
   align-self: flex-end;
 }
 
-#linkedin, #github {
+#linkedin, #github, #playMusic, #pauseMusic {
   height: 50px;
   width: 50px;
   background-size: cover;
@@ -150,6 +150,14 @@ button:hover {
   background-image: url("../resources/buttons/linkedin.png");
 }
 
+#playMusic {
+  background-image: url("../resources/buttons/github.png");
+}
+
+#pauseMusic {
+  background-image: url("../resources/buttons/github.png");
+}
+
 #main {
   display: flex;
   align-items: center;
@@ -157,7 +165,7 @@ button:hover {
 }
 
 h3 {
-  padding: 10px;
+  margin-bottom: 30px;
   font-weight: 900;
 }
 

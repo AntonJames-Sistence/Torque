@@ -31,7 +31,7 @@ class Odometer {
         // game odometer and score render
         this.context.drawImage(this.speedImg, 0, 270, 220, 220);
         this.context.drawImage(arrow, 50, 320, 130, 130);
-        this.context.fillText(`Score: ${score}`, 50, 460);
+        this.context.fillText(`Score: ${score}`, 30, 460);
         // frame counter
         this.frame += 1;
     }

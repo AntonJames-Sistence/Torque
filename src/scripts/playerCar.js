@@ -1,5 +1,5 @@
 class Player {
-    constructor(screen, context) {
+    constructor(canvas, context) {
         // players car image 
         const playerCarImg = new Image();
         playerCarImg.src = "resources/cars_img/playerCarImage.png";
@@ -16,7 +16,7 @@ class Player {
 
         // canvas connection
         this.context = context;
-        this.screen = screen;
+        this.canvas = canvas;
 
         // lives and invincible status
         this.life = 3;
@@ -27,6 +27,11 @@ class Player {
     // simple reDraw
     drive(){
         this.context.drawImage(this.carImg, this.carX, this.carY, this.width, this.height);
+    }
+
+    // animation for gas
+    gas(){
+        
     }
 
 }
