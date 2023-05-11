@@ -3,15 +3,15 @@
   \*************************************************************************************************************************************/
 #screen, #leftBackgroundPiece, #rightBackgroundPiece {
   background-color: #1f6723;
-  border-bottom: 5px solid #05c5ed;
-  border-top: 5px solid #05c5ed;
+  border-bottom: 5px solid #68156f;
+  border-top: 5px solid #68156f;
 }
 
 #stats {
   background-color: #1f6723;
-  border-left: 5px solid #05c5ed;
-  border-bottom: 5px solid #05c5ed;
-  border-top: 5px solid #05c5ed;
+  border-left: 5px solid #68156f;
+  border-bottom: 5px solid #68156f;
+  border-top: 5px solid #68156f;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -92,6 +92,7 @@ table {
   padding: 50px;
   border: 5px solid #e55c18;
   font-family: "Sigmar One";
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   font-size: 20px;
   color: black;
 }
@@ -106,18 +107,19 @@ table {
   margin-top: 20px;
 }
 
-#arrows {
-  height: 100px;
-  margin: 10px;
+.introImg {
+  height: 40px;
 }
 
 button {
   background-color: #e55c18;
   color: gainsboro;
   font-family: "Sigmar One";
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
   height: 50px;
   width: 100px;
   border-radius: 5%;
+  cursor: pointer;
 }
 
 button:hover {
@@ -151,14 +153,21 @@ button:hover {
 }
 
 #playMusic {
-  background-image: url("../resources/buttons/github.png");
+  background-image: url("../resources/buttons/soundOn.png");
 }
 
 #pauseMusic {
-  background-image: url("../resources/buttons/github.png");
+  background-image: url("../resources/buttons/soundOff.png");
+}
+
+body {
+  background-image: url("../resources/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #main {
+  margin-top: 1%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -174,13 +183,20 @@ h3 {
   justify-content: space-between;
   flex-direction: column;
   background-color: #1f6723;
-  border-right: 5px solid #05c5ed;
-  border-bottom: 5px solid #05c5ed;
-  border-top: 5px solid #05c5ed;
+  border-right: 5px solid #68156f;
+  border-bottom: 5px solid #68156f;
+  border-top: 5px solid #68156f;
   height: 700px;
 }
 
 #musicWrap, #linksWrap {
   display: flex;
   flex-direction: column;
+}
+
+#gameName {
+  font-family: "Vina Sans", cursive;
+  font-size: 40px;
+  color: #e55c18;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
 }

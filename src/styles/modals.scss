@@ -22,6 +22,7 @@
     padding: 50px;
     border: 5px solid #e55c18;
     font-family: 'Sigmar One';
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     font-size: 20px;
     color: black;
 }
@@ -36,8 +37,6 @@
     margin-top: 20px;
 }
 
-// img doesnt work online
-#arrows {
-    height: 100px;
-    margin: 10px;
+.introImg {
+    height: 40px;
 }

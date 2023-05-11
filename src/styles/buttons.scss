@@ -2,9 +2,11 @@ button {
     background-color: #e55c18;
     color: gainsboro;
     font-family: 'Sigmar One';
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
     height: 50px;
     width: 100px;
     border-radius: 5%;
+    cursor: pointer;
 }
 
 button:hover {
@@ -27,6 +29,7 @@ button:hover {
     background-repeat: no-repeat;
     background-position: center;
     align-self: flex-end;
+    
 }
 
 #github {
@@ -38,9 +41,9 @@ button:hover {
 }
 
 #playMusic {
-    background-image: url('../resources/buttons/github.png');
+    background-image: url('../resources/buttons/soundOn.png');
 }
 
 #pauseMusic {
-    background-image: url('../resources/buttons/github.png');
+    background-image: url('../resources/buttons/soundOff.png');
 }

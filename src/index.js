@@ -142,13 +142,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentCar.carX >= playerCar.carX-50 &&
                     currentCar.carX <= playerCar.carX+50 ){
 
+                    // play crash sound but only if music button was clicked
+                    if (soundEffects){
+                        crashSound.play();
+                    }
+                        
                     if ((playerCar.life > 0)){
                         // check if players car is in invincible state
                         if(playerCar.invincible === false){
                             // logic to prevent from loosing all life in the same crash
                             playerCar.invincible = true;
+                            // crash restrictments
                             playerCar.life--;
-                            gameSpeed = 1;
+                            if (gameSpeed > 2){
+                                gameSpeed -= 2;
+                            } else {
+                                gameSpeed = 1;
+                            }
                             // invincibility timer
                             setTimeout(() => {
                             playerCar.invincible = false;
@@ -234,7 +244,15 @@ function resetGameParams() {
     
 // creating new audio object to play music
 let music = new Audio();
-music.src = "resources/speeding.mp3";
+music.src = "resources/sounds/hotRoad.ogg";
+
+// crash sound
+let crashSound = new Audio();
+crashSound.src = "resources/sounds/explosion.mp3";
+
+// sound effects toggler for mute
+let soundEffects = false;
+
 
 // get music buttons
 const playMusicBtn = document.getElementById("playMusic");
@@ -245,12 +263,14 @@ playMusicBtn.addEventListener(
     'click',
     () => {
         music.play();
+        soundEffects = true;
     }
 )
 pauseMusicBtn.addEventListener(
     'click',
     () => {
         music.pause();
+        soundEffects = false;
     }
 )
 
@@ -268,7 +288,7 @@ linkBtn.addEventListener(
 githubBtn.addEventListener(
     'click',
     () => {
-        window.open("https://github.com/AntonJames-Sistence", "_blank");
+        window.open("https://github.com/AntonJames-Sistence/Torque.git", "_blank");
     }
 );
 
