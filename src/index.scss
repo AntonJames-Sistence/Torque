@@ -7,7 +7,7 @@ body {
     background-image: url("../resources/background.png");
     background-repeat: no-repeat;
     background-size: cover;
-  }
+}
 
 #main {
     margin-top: 1%;
@@ -35,4 +35,11 @@ h3 {
 #musicWrap, #linksWrap {
     display: flex;
     flex-direction: column;
+}
+
+#gameName {
+    font-family: 'Vina Sans', cursive;
+    font-size: 40px;
+    color: #e55c18;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
 }

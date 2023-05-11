@@ -92,6 +92,7 @@ table {
   padding: 50px;
   border: 5px solid #e55c18;
   font-family: "Sigmar One";
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
   font-size: 20px;
   color: black;
 }
@@ -106,15 +107,15 @@ table {
   margin-top: 20px;
 }
 
-#arrows {
-  height: 100px;
-  margin: 10px;
+.introImg {
+  height: 40px;
 }
 
 button {
   background-color: #e55c18;
   color: gainsboro;
   font-family: "Sigmar One";
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
   height: 50px;
   width: 100px;
   border-radius: 5%;
@@ -191,4 +192,11 @@ h3 {
 #musicWrap, #linksWrap {
   display: flex;
   flex-direction: column;
+}
+
+#gameName {
+  font-family: "Vina Sans", cursive;
+  font-size: 40px;
+  color: #e55c18;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
 }

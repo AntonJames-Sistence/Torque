@@ -13,7 +13,7 @@
     <link rel="icon" type="image/x-icon" href="./resources/x-icon.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Sigmar+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Sigmar+One&family=Vina+Sans&display=swap" rel="stylesheet">
   </head>
 
   <body>
@@ -22,22 +22,27 @@
       <div id="greetings-container"></div>
 
       <div id="greetings">
-        <h2><center>Welcome!</center></h2>
+        <h2><center>Welcome to <h2 id="gameName">Torque!</h2></center></h2>
 
           <div id="instructions">
-            <img id="arrows" src="resources/arrows.png">
+            
               <h3>
+                <img class="introImg" src="resources/intro_img/arrows.png">
                 1. Navigate your car using arrow keys to move in different directions.
                 <br>
-                2. Colliding with other cars will deduct your lives.
+                <img class="introImg" src="resources/intro_img/coin.png">
+                2. Collect coins to improve your score.
                 <br>
+                <img class="introImg" src="resources/intro_img/speed.png">
                 3. The game speed gradually increases as you progress.
                 <br>
+                <img class="introImg" src="resources/intro_img/hp.png">
                 4. Your remaining lives are displayed on the left side of the screen.
                 <br>
-                5. After your car is hit by a competitor, it becomes invincible for a duration of 3 seconds.
+                <img class="introImg" src="resources/intro_img/crash.png">
+                5. Colliding with other cars will deduct your lives.
                 <br>
-                6. Collect coins to improve your score.
+                After your car is hit by a competitor, it becomes invincible for a duration of 3 seconds.
               </h3>
           </div>
 
