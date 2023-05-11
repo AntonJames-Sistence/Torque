@@ -151,11 +151,11 @@ button:hover {
 }
 
 #playMusic {
-  background-image: url("../resources/buttons/github.png");
+  background-image: url("../resources/buttons/soundOn.png");
 }
 
 #pauseMusic {
-  background-image: url("../resources/buttons/github.png");
+  background-image: url("../resources/buttons/soundOff.png");
 }
 
 body {
