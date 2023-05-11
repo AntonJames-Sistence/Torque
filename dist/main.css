@@ -3,15 +3,15 @@
   \*************************************************************************************************************************************/
 #screen, #leftBackgroundPiece, #rightBackgroundPiece {
   background-color: #1f6723;
-  border-bottom: 5px solid #05c5ed;
-  border-top: 5px solid #05c5ed;
+  border-bottom: 5px solid #68156f;
+  border-top: 5px solid #68156f;
 }
 
 #stats {
   background-color: #1f6723;
-  border-left: 5px solid #05c5ed;
-  border-bottom: 5px solid #05c5ed;
-  border-top: 5px solid #05c5ed;
+  border-left: 5px solid #68156f;
+  border-bottom: 5px solid #68156f;
+  border-top: 5px solid #68156f;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -158,7 +158,14 @@ button:hover {
   background-image: url("../resources/buttons/github.png");
 }
 
+body {
+  background-image: url("../resources/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 #main {
+  margin-top: 1%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -174,9 +181,9 @@ h3 {
   justify-content: space-between;
   flex-direction: column;
   background-color: #1f6723;
-  border-right: 5px solid #05c5ed;
-  border-bottom: 5px solid #05c5ed;
-  border-top: 5px solid #05c5ed;
+  border-right: 5px solid #68156f;
+  border-bottom: 5px solid #68156f;
+  border-top: 5px solid #68156f;
   height: 700px;
 }
 
