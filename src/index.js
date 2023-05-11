@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentCoin.coinX >= playerCar.carX - 55 &&
                     currentCoin.coinX <= playerCar.carX + 55 
                     ){
-                        score += 1000;
+                        score += 500;
                         currentCoin.randomizeCoinPos();
                         currentCoin.frame = 0;
 
@@ -324,7 +324,7 @@ githubBtn.addEventListener(
         // if (isPaused === false){
 
         // score increasement based on game speed
-        score += Math.floor(1 * gameSpeed);
+        score += (Math.floor(0.5 * gameSpeed))+1;
 
         // clear left and right background canvases before next frame
         leftBkgCtx.clearRect(0, 0, leftBkgScreen.width, leftBkgScreen.height)
