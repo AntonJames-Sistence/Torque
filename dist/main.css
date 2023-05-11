@@ -1,6 +1,19 @@
 /*!*************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
   \*************************************************************************************************************************************/
+#screen, #leftBackgroundPiece, #rightBackgroundPiece {
+  background-color: #1f6723;
+  border-bottom: 5px solid #05c5ed;
+  border-top: 5px solid #05c5ed;
+}
+
+#stats {
+  background-color: #1f6723;
+  border-left: 5px solid #05c5ed;
+  border-bottom: 5px solid #05c5ed;
+  border-top: 5px solid #05c5ed;
+}
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -55,34 +68,6 @@ table {
   border-spacing: 0;
 }
 
-#main {
-  display: flex;
-}
-
-#stats {
-  background-color: #F2D98D;
-  border: 5px solid #037F8C;
-}
-
-button {
-  background-color: #F24444;
-  color: aliceblue;
-  height: 50px;
-  width: 100px;
-  border-radius: 20%;
-}
-
-button:hover {
-  background-color: #F29829;
-}
-
-.music {
-  display: flex;
-  flex-direction: column;
-  background-color: #F2D98D;
-  border: 5px solid #037F8C;
-}
-
 #greetings-container {
   display: none;
   position: fixed;
@@ -90,32 +75,55 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  justify-content: center;
-  align-items: center;
   background-color: black;
   opacity: 0.85;
 }
 
 #greetings, #finalMessage {
+  display: none;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 400px;
+  height: 450px;
   width: 400px;
-  border-radius: 15%;
-  background-color: #F2D98D;
+  border-radius: 5%;
+  background-color: #69a937;
   padding: 50px;
-  border: 5px solid #037F8C;
-  font-family: "Kalam", cursive;
-  font-size: 22px;
+  border: 5px solid #e55c18;
+  font-family: "Sigmar One";
+  font-size: 20px;
   color: black;
 }
 
 #finalMessage {
   height: 100px;
-  width: 400px;
-  border-radius: 20%;
+  border: 5px solid #e55c18;
+  font-family: "Kalam";
+}
+
+#instructions {
+  margin-top: 20px;
+}
+
+#arrows {
+  height: 100px;
+  margin: 10px;
+}
+
+button {
+  background-color: #e55c18;
+  color: gainsboro;
+  font-family: "Sigmar One";
+  height: 50px;
+  width: 100px;
+  border-radius: 5%;
+}
+
+button:hover {
+  background-color: #ebe03c;
+  border-style: inset;
+  color: black;
 }
 
 #startGame, #restartGame {
@@ -125,16 +133,46 @@ button:hover {
   align-self: flex-end;
 }
 
+#linkedin, #github {
+  height: 50px;
+  width: 50px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  align-self: flex-end;
+}
+
+#github {
+  background-image: url("../resources/buttons/github.png");
+}
+
+#linkedin {
+  background-image: url("../resources/buttons/linkedin.png");
+}
+
+#main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 h3 {
   padding: 10px;
   font-weight: 900;
 }
 
-#arrows {
-  height: 100px;
-  margin: 10px;
+#helperBar {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: #1f6723;
+  border-right: 5px solid #05c5ed;
+  border-bottom: 5px solid #05c5ed;
+  border-top: 5px solid #05c5ed;
+  height: 700px;
 }
 
-#instructions {
-  margin-top: 20px;
+#musicWrap, #linksWrap {
+  display: flex;
+  flex-direction: column;
 }

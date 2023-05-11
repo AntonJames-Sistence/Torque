@@ -1,0 +1,38 @@
+button {
+    background-color: #e55c18;
+    color: gainsboro;
+    font-family: 'Sigmar One';
+    height: 50px;
+    width: 100px;
+    border-radius: 5%;
+}
+
+button:hover {
+    background-color: #ebe03c;
+    border-style: inset;
+    color: black;
+}
+
+#startGame, #restartGame {
+    position: absolute;
+    bottom: 20px;
+    left: 40%;
+    align-self: flex-end;
+}
+
+#linkedin, #github {
+    height: 50px;
+    width: 50px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-self: flex-end;
+}
+
+#github {
+    background-image: url('../resources/buttons/github.png');
+}
+
+#linkedin{
+    background-image: url('../resources/buttons/linkedin.png');
+}

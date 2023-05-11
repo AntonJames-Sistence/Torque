@@ -3,7 +3,7 @@ class Competitor {
         // img paramaters with random generator
         const competitorImg = new Image();
         let randImg = Math.floor(Math.random() * 6);
-        competitorImg.src = `resources/car${randImg}.png`;
+        competitorImg.src = `resources/cars_img/car${randImg}.png`;
         this.carImg = competitorImg;
 
         // randomized car position and car size
@@ -53,7 +53,7 @@ class Competitor {
             this.carImg = crashImg;
 
             // change car image according to logic above
-            this.context.drawImage(this.carImg, this.carX-70, this.carY-40, 200, 200); // hardcoded crash image
+            this.context.drawImage(this.carImg, this.carX-100, this.carY-40, 250, 200); // hardcoded crash image
 
             this.crashPointFrame += 1;
         } else {

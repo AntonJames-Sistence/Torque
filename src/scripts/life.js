@@ -7,7 +7,7 @@ class LifeBar {
         
         // create image object
         const image = new Image();
-        image.src = "resources/hp.png";
+        image.src = "resources/stats_bar/hp.png";
         this.lifeImg = image;
 
     }
@@ -15,14 +15,14 @@ class LifeBar {
     // depending on num given render 1 to 3 health bars
     draw(n){
         if (n === 1){
-            this.context.drawImage(this.lifeImg, 10, this.canvas.height-100, 70, 70);
+            this.context.drawImage(this.lifeImg, 15, this.canvas.height-100, 60, 60);
         } else if ( n === 2 ){
-            this.context.drawImage(this.lifeImg, 10, this.canvas.height-100, 70, 70);
-            this.context.drawImage(this.lifeImg, 80, this.canvas.height-100, 70, 70);
+            this.context.drawImage(this.lifeImg, 15, this.canvas.height-100, 60, 60);
+            this.context.drawImage(this.lifeImg, 85, this.canvas.height-100, 60, 60);
         } else if ( n > 2 ){
-            this.context.drawImage(this.lifeImg, 10, this.canvas.height-100, 70, 70);
-            this.context.drawImage(this.lifeImg, 80, this.canvas.height-100, 70, 70)
-            this.context.drawImage(this.lifeImg, 150, this.canvas.height-100, 70, 70)
+            this.context.drawImage(this.lifeImg, 15, this.canvas.height-100, 60, 60);
+            this.context.drawImage(this.lifeImg, 85, this.canvas.height-100, 60, 60)
+            this.context.drawImage(this.lifeImg, 155, this.canvas.height-100, 60, 60)
         } 
     }
 

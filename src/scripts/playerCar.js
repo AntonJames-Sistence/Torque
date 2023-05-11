@@ -2,7 +2,7 @@ class Player {
     constructor(screen, context) {
         // players car image 
         const playerCarImg = new Image();
-        playerCarImg.src = "resources/playerCarImage.png";
+        playerCarImg.src = "resources/cars_img/playerCarImage.png";
         this.carImg = playerCarImg;
 
         // players car starting position and size

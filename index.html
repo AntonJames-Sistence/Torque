@@ -13,7 +13,7 @@
     <link rel="icon" type="image/x-icon" href="./resources/x-icon.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Kalam:wght@300&family=Sigmar&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@700&family=Sigmar+One&display=swap" rel="stylesheet">
   </head>
 
   <body>
@@ -25,7 +25,7 @@
         <h2><center>Welcome!</center></h2>
 
           <div id="instructions">
-            <img id="arrows" src="/resources/arrows.png">
+            <img id="arrows" src="resources/arrows.png">
               <h3>
                 1. Use arrows to move your car
                 <br>
@@ -33,27 +33,31 @@
                 <br>
                 3. Game speed increasing with time
                 <br>
-                4. Hit points displeyed on the left bar
+                4. Lifes displayed on the left bar
+                <br>
+                5. Your car is Invincible after competitor hit for 3 seconds
               </h3>
           </div>
 
-          <!-- <h3>
-            Are you ready to take on the challenge?
-          </h3> -->
         <button id="startGame">Gas!</button>
       </div>
 
       <canvas id="stats" height="700px" width="230px"></canvas>
 
-      <canvas id="leftBackgroundPiece"></canvas>
+      <canvas id="leftBackgroundPiece" height="700px" width="250px"></canvas>
       <canvas id="screen" height="700px" width="500px"></canvas>
-      <canvas id="rightBackgroundPiece"></canvas>
+      <canvas id="rightBackgroundPiece" height="700px" width="250px"></canvas>
 
-      <!-- <canvas id="support-bar" height="700px" width="185px"></canvas> -->
+      <div id="helperBar">
+        <div id="musicWrap">
+          <button id="playMusic">Play Music</button>
+          <button id="stopMusic">Pause Music</button>
+        </div>
 
-      <div class="music">
-        <button id="playMusic">Play Music</button>
-        <button id="stopMusic">Pause Music</button>
+        <div id="linksWrap">
+          <button id="linkedin"></button>
+          <button id="github"></button>
+        </div>
       </div>
 
       <div id="finalMessage" style="display: none;">

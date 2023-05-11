@@ -2,6 +2,8 @@ import Player from './scripts/playerCar';
 import Competitor from './scripts/competitor';
 import Background from './scripts/background';
 import LifeBar from './scripts/life';
+import Speedometer from './scripts/speedometer';
+import Odometer from './scripts/odometer';
 
 document.addEventListener('DOMContentLoaded', () => {
     
@@ -28,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let score = 0;
 
     // set up gameSpeed parameter
-    let gameSpeed = 1;
+    let gameSpeed;
 
     // increasing gameSpeed by setting up interval
     setInterval(() => { if(gameSpeed < 10) gameSpeed += 1 }, 4000); // can be calibrated
@@ -36,15 +38,19 @@ document.addEventListener('DOMContentLoaded', () => {
 //======================================== Game Stats Bar ===============================================
 
     const lifesBar = new LifeBar(statsScreen, statsCtx);
+    const spdmtr = new Speedometer(statsScreen, statsCtx);
+    const odomtr = new Odometer(statsScreen, statsCtx);
 
     // updating game stats
     function updateStats(){
-        statsCtx.font = "20px Arial";
-        // game speed
-        statsCtx.fillText(`Current game speed: ${gameSpeed}`, 10, 100);
+        // text styling
+        statsCtx.font = "20px Sigmar One";
+
+        // game speed draw
+        spdmtr.draw(gameSpeed);
 
         // current score
-        statsCtx.fillText(`Your score: ${score}`, 10, 200);
+        odomtr.draw(score, gameSpeed);
 
         // current life
         lifesBar.draw(playerCar.life);
@@ -71,15 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // side animation right part
     const rightSideBackground1 = new Background(rightBkgScreen, rightBkgCtx, 0, "resources/rightBackground.png")
     const rightSideBackground2 = new Background(rightBkgScreen, rightBkgCtx, -700, "resources/rightBackground.png")
-
-//====================================== Initial Background ==============================================
-// doesnt work
-// leftSideBackground1.drawBackground();
-// leftSideBackground2.drawBackground();
-// rightSideBackground1.drawBackground();
-// rightSideBackground2.drawBackground();
-// roadBackground1.drawBackground();
-// roadBackground2.drawBackground();
 
 // ===================================== Main Game Loop Logic ============================================
 
@@ -115,11 +112,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if ((keys["ArrowUp"]) && (playerCar.carY > 10)) { 
-                playerCar.carY -= playerCar.speed + (gameSpeed * 0.7); // up move with speed relationship
+                playerCar.carY -= playerCar.speed + (gameSpeed * 0.3); // up move with speed relationship
         }
 
         if ((keys["ArrowDown"]) && (playerCar.carY < playerCar.screen.height-100)) { 
-            playerCar.carY += playerCar.speed + (gameSpeed * 0.7); // down move with speed relationship
+            playerCar.carY += playerCar.speed + (gameSpeed * 1); // down move with speed relationship
         }
 
 //=================================== Competitors and physics =================================================
@@ -165,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 // randomize competitor car img
                 let randImg = Math.floor(Math.random() * 6);
-                currentCar.carImg.src = `resources/car${randImg}.png`;
+                currentCar.carImg.src = `resources/cars_img/car${randImg}.png`;
                 currentCar.crashPointFrame = 0;
                 currentCar.destroyed = false; 
                 // randomize competitor position
@@ -218,7 +215,25 @@ pauseMusicBtn.addEventListener(
     }
 )
 
-//====================================================================================================
+//============================================== Links buttons ===================================================
+
+const linkBtn = document.getElementById("linkedin");
+const githubBtn = document.getElementById("github");
+
+linkBtn.addEventListener(
+    'click',
+    () => {
+        window.open("https://www.linkedin.com/in/anton-james-9b5b18275/", "_blank");
+    }
+);
+githubBtn.addEventListener(
+    'click',
+    () => {
+        window.open("https://github.com/AntonJames-Sistence", "_blank");
+    }
+);
+
+//====================================== Key up and Key down listeners ============================================
 
     // add listener for keyDown process
     document.addEventListener(
@@ -274,6 +289,7 @@ pauseMusicBtn.addEventListener(
     function greetingToggler() {
         let greetingContainer = document.getElementById("greetings-container");
         let greeting = document.getElementById("greetings");
+
         if (greeting.style.display === "block"){
             greeting.style.display = "none";
             greetingContainer.style.display = "none";
@@ -316,7 +332,7 @@ pauseMusicBtn.addEventListener(
             finalMessage.style.display = "block";
             finalMessageContainer.style.display = "block";
             let fMes = document.createElement("h3");
-            fMes.textContent = `Game over! Your score is: ${score}`;
+            fMes.textContent = `Thank you for playing! Your score is: ${score}`;
             finalMessage.appendChild(fMes);
         }
     }
