@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // creating coins
     const coins = [];
-    for (let i = 0; i < 3; i++){
+    for (let i = 0; i < 4; i++){
         coins.push(new Coin(gameScreen, gameCtx));
     }
 
@@ -198,6 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ){
                         score += 1000;
                         currentCoin.randomizeCoinPos();
+                        currentCoin.frame = 0;
 
                 } else {
                     currentCoin.coinY += gameSpeed + 3;
@@ -222,6 +223,10 @@ function resetGameParams() {
     for(let i = 0; i < competitors.length; i++){
         competitors[i].randomizeCarPos();
         competitors[i].speed = 0;
+    }
+    for(let j = 0; j < coins.length; j++){
+        coins[j].randomizeCoinPos();
+        coins[j].frame = 0;
     }
 }
 
