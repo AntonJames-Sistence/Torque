@@ -38,14 +38,14 @@ class Coin{
             coinImg.src = 'resources/coins_img/frame7.png';
         };
 
-        // ender coin image acording logic above
+        // render coin image acording logic above
         this.context.drawImage(coinImg, this.coinX, this.coinY, this.width, this.height);
 
         // check if animation made full circle
         if (this.frame >= 40){
             this.frame = 0;
         }
-            
+        
         this.frame++;
     }
 
