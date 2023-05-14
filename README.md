@@ -17,31 +17,41 @@
 
 ### Car navigation:
 
-* Players can skillfully navigate their cars by utilizing the arrow keys on their keyboard, allowing for precise control and maneuverability within the game world. 
-<!-- navigation img -->
-<!-- code img -->
+* Players can skillfully navigate their cars by utilizing the arrow keys on their keyboard, allowing for precise control and maneuverability within the game world.
+
+![Torque movements](./resources/readme/movements.png)
 
 ### Dodge Other Cars:
 
 * Stay alert and skillfully avoid colliding with other cars to survive longer and achieve a higher final score. Find gaps and opportunities to safely pass other vehicles.
-<!-- dodging img -->
-<!-- code img -->
+
+![Torque dodge](./resources/readme/dodge.gif)
 
 ### Collect Coins:
 
 * Gather coins scattered throughout the game world to improve your score, adding an extra layer of challenge and reward to gameplay.
-<!-- collecting img -->
-<!-- code img -->
 
-### Music:
+![Torque coins](./resources/readme/coins.gif)
 
-* Enjoy a carefully selected soundtrack that enhances the atmosphere and adds excitement to your gameplay.
+#### index.js:
+
+![Torque coins/index.js](./resources/readme/coins.png)
+
+#### coin.js:
+
+![Torque coins/coin.js](./resources/readme/coins2.png)
 
 ### Score:
 
 *  Keep track of your performance and strive for a high score. Monitor your progress and aim to surpass your previous achievements, adding a competitive element to the game and encouraging replayability.
-<!-- score img -->
-<!-- code img -->
+
+![Torque score](./resources/readme/score.gif)
+
+![Torque final](./resources/readme/final.png)
+
+### Music:
+
+* Enjoy a carefully selected soundtrack that enhances the atmosphere and adds excitement to your gameplay.
 
 ## Technologies
 

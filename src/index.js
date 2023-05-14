@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         roadBackground2.updateBackgroundsecondFrame(gameSpeed);
         roadBackground1.drawBackground();
         roadBackground2.drawBackground();
-
+        
         if ((keys["ArrowRight"]) && (playerCar.carX < (playerCar.canvas.width - 75))) { 
                 playerCar.carX += playerCar.speed + (gameSpeed * 0.7); // right move with speed relationship
         }
@@ -196,11 +196,11 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 0; i < coins.length; i++){
             let currentCoin = coins[i];
 
-            // check if coins outside main canvas so they can be generated again
+            // check if coins outside main canvas so they can be generated again, optimizing memory use
             if (currentCoin.coinY > currentCoin.canvas.height){
                 currentCoin.randomizeCoinPos();
             } else {
-                // collection logic
+                // coins boxes, calibrated to achieve better pixel visualization
                 if ( currentCoin.coinY >= playerCar.carY - 55 &&
                     currentCoin.coinY <= playerCar.carY + 55 &&
                     currentCoin.coinX >= playerCar.carX - 55 &&
