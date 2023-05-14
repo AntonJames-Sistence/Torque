@@ -6,8 +6,7 @@
 
 ## Wireframe:
 
-![Torque Wireframe](./resources/readme/wireframe.png)
-
+![Torque wireframe](./resources/readme/wireframe.png)
 
 * The main game screen features a dynamic canvas that constantly updates its graphics based on the player's input and the game's logic, delivering an immersive gaming experience.
 * The game parameters bar provides vital information such as hit points, score, and game speed, giving players real-time feedback on their progress and performance.
@@ -15,17 +14,13 @@
 
 ## Functionality:
 
-### Car navigation:
+### Car navigation and Dodging:
 
-* Players can skillfully navigate their cars by utilizing the arrow keys on their keyboard, allowing for precise control and maneuverability within the game world.
-
-![Torque movements](./resources/readme/movements.png)
-
-### Dodge Other Cars:
-
-* Stay alert and skillfully avoid colliding with other cars to survive longer and achieve a higher final score. Find gaps and opportunities to safely pass other vehicles.
+* Stay alert and skillfully avoid colliding with other by utilizing the arrow keys. Survive longer and achieve a higher final score. Find gaps and opportunities to safely pass other vehicles.
 
 ![Torque dodge](./resources/readme/dodge.gif)
+
+![Torque movements](./resources/readme/movements.png)
 
 ### Collect Coins:
 
