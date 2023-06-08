@@ -7,6 +7,13 @@ import Odometer from './scripts/odometer';
 import Coin from './scripts/coin';
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    // add prevent to scroll using arrow keys
+    window.addEventListener("keydown", function(e) {
+        if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) {
+            e.preventDefault();
+        }
+      }, false);
     
 //====================================== Get cancas and context =====================================
     
