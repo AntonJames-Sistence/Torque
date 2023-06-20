@@ -289,7 +289,7 @@ const githubBtn = document.getElementById("github");
 linkBtn.addEventListener(
     'click',
     () => {
-        window.open("https://www.linkedin.com/in/anton-james-9b5b18275/", "_blank");
+        window.open("https://www.linkedin.com/in/anton-james-ja/", "_blank");
     }
 );
 githubBtn.addEventListener(
