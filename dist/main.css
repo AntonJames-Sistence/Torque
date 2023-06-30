@@ -87,19 +87,19 @@ table {
   transform: translate(-50%, -50%);
   height: auto;
   width: 400px;
-  border-radius: 5%;
+  border-radius: 25px;
   background-color: #69a937;
   padding: 50px;
-  border: 5px solid #e55c18;
+  /* border: 2px solid #e55c18; */
   font-family: "Sigmar One";
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0 20px 0px #e55c18;
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); */
   font-size: 20px;
   color: black;
 }
 
 #finalMessage {
   height: 100px;
-  border: 5px solid #e55c18;
   font-family: "Kalam";
 }
 
@@ -113,19 +113,22 @@ table {
 
 button {
   background-color: #e55c18;
-  color: gainsboro;
+  color: black;
   font-family: "Sigmar One";
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
-  height: 50px;
+  padding: 5px;
   width: 100px;
-  border-radius: 5%;
+  border-radius: 5px;
   cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+  box-shadow: 0px 3px 10px 0px black;
 }
 
 button:hover {
-  background-color: #ebe03c;
-  border-style: inset;
-  color: black;
+  transform: scale(1.1);
+}
+button:active {
+  transform: scale(0.50);
 }
 
 #startGame, #restartGame {

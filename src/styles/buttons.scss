@@ -19,7 +19,6 @@ button:hover {
     position: absolute;
     bottom: 20px;
     left: 40%;
-    align-self: flex-end;
 }
 
 #linkedin, #github, #playMusic, #pauseMusic {
@@ -42,6 +41,7 @@ button:hover {
 
 #playMusic {
     background-image: url('../resources/buttons/soundOn.png');
+    margin-bottom: 10px;
 }
 
 #pauseMusic {
