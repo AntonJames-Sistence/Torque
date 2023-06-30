@@ -1,38 +1,59 @@
 button {
     background-color: #e55c18;
-    color: gainsboro;
-    font-family: 'Sigmar One';
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
-    height: 50px;
-    width: 100px;
-    border-radius: 5%;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #ebe03c;
-    border-style: inset;
     color: black;
+    font-family: "Sigmar One";
+    padding: 5px;
+    width: 100px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    box-shadow: 0px 3px 10px 0px black;
 }
 
-#startGame, #restartGame {
+button:active {
+    transform: scale(0.50);
+}
+#startGame {
+    padding: 10px;
+}
+#startGame, 
+#restartGame {
     position: absolute;
     bottom: 20px;
     left: 40%;
 }
+#startGame:hover,
+#restartGame:hover {
+    transform: scale(1.1);
+    color: #ebe03c;
+}
+#startGame:active,
+#restartGame:active {
+    transform: scale(0.50);
+}
 
-#linkedin, #github, #playMusic, #pauseMusic {
+#linkedin, 
+#github, 
+#playMusic, 
+#pauseMusic, 
+#wellfound {
     height: 50px;
     width: 50px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     align-self: flex-end;
-    
+}
+
+#wellfound {
+    background-image: url('../resources/buttons/angellist.png');
+    margin-bottom: 10px;
 }
 
 #github {
     background-image: url('../resources/buttons/github.png');
+    margin-top: 10px;
 }
 
 #linkedin {
@@ -42,6 +63,12 @@ button:hover {
 #playMusic {
     background-image: url('../resources/buttons/soundOn.png');
     margin-bottom: 10px;
+}
+#playMusic:hover,
+#pauseMusic:hover,
+#github:hover,
+#linkedin:hover {
+    background-color: #ebe03c;
 }
 
 #pauseMusic {

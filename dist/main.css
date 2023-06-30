@@ -90,7 +90,7 @@ table {
   border-radius: 25px;
   background-color: #69a937;
   padding: 50px;
-  /* border: 2px solid #e55c18; */
+  border: 2px solid #e55c18;
   font-family: "Sigmar One";
   box-shadow: 0px 0 20px 0px #e55c18;
   /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); */
@@ -99,7 +99,7 @@ table {
 }
 
 #finalMessage {
-  height: 100px;
+  height: 70px;
   font-family: "Kalam";
 }
 
@@ -124,21 +124,37 @@ button {
   box-shadow: 0px 3px 10px 0px black;
 }
 
-button:hover {
-  transform: scale(1.1);
-}
 button:active {
-  transform: scale(0.50);
+  transform: scale(0.5);
 }
 
-#startGame, #restartGame {
+#startGame {
+  padding: 10px;
+}
+
+#startGame,
+#restartGame {
   position: absolute;
   bottom: 20px;
   left: 40%;
-  align-self: flex-end;
 }
 
-#linkedin, #github, #playMusic, #pauseMusic {
+#startGame:hover,
+#restartGame:hover {
+  transform: scale(1.1);
+  color: #ebe03c;
+}
+
+#startGame:active,
+#restartGame:active {
+  transform: scale(0.5);
+}
+
+#linkedin,
+#github,
+#playMusic,
+#pauseMusic,
+#wellfound {
   height: 50px;
   width: 50px;
   background-size: cover;
@@ -147,8 +163,14 @@ button:active {
   align-self: flex-end;
 }
 
+#wellfound {
+  background-image: url("../resources/buttons/angellist.png");
+  margin-bottom: 10px;
+}
+
 #github {
   background-image: url("../resources/buttons/github.png");
+  margin-top: 10px;
 }
 
 #linkedin {
@@ -157,6 +179,14 @@ button:active {
 
 #playMusic {
   background-image: url("../resources/buttons/soundOn.png");
+  margin-bottom: 10px;
+}
+
+#playMusic:hover,
+#pauseMusic:hover,
+#github:hover,
+#linkedin:hover {
+  background-color: #ebe03c;
 }
 
 #pauseMusic {
