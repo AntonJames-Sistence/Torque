@@ -30,6 +30,10 @@ h3 {
     border-bottom: 5px solid #68156f;
     border-top: 5px solid #68156f;
     height: 700px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    // box-shadow: inset -20px 0 20px -20px #e55c18;
+    box-shadow: 15px 0px 20px 0px #68156f;
 }
 
 #musicWrap, #linksWrap {

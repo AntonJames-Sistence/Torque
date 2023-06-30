@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }, false);
     
-//====================================== Get cancas and context =====================================
+//====================================== Get canvas and context =====================================
     
     // get stats canvas
     const statsScreen = document.getElementById('stats');

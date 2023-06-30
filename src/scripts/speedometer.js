@@ -4,7 +4,7 @@ class Speedometer {
         this.context = context;
 
         const img = new Image();
-        img.src = "resources/stats_bar/speed.png";
+        img.src = "resources/stats_bar/speed2.png";
         this.speedImg = img;
 
         this.frame = 0;

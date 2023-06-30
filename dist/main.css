@@ -12,6 +12,9 @@
   border-left: 5px solid #68156f;
   border-bottom: 5px solid #68156f;
   border-top: 5px solid #68156f;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  box-shadow: -10px 0px 20px 0px #68156f;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -117,7 +120,7 @@ button {
   font-family: "Sigmar One";
   padding: 5px;
   width: 100px;
-  border-radius: 5px;
+  border-radius: 15px;
   cursor: pointer;
   transition: all 0.3s;
   border: none;
@@ -161,6 +164,8 @@ button:active {
   background-repeat: no-repeat;
   background-position: center;
   align-self: flex-end;
+  border-radius: 50%;
+  transition: all 0.3s;
 }
 
 #wellfound {
@@ -171,6 +176,7 @@ button:active {
 #github {
   background-image: url("../resources/buttons/github.png");
   margin-top: 10px;
+  background-position-y: -0.5px;
 }
 
 #linkedin {
@@ -185,7 +191,8 @@ button:active {
 #playMusic:hover,
 #pauseMusic:hover,
 #github:hover,
-#linkedin:hover {
+#linkedin:hover,
+#wellfound:hover {
   background-color: #ebe03c;
 }
 
@@ -220,6 +227,9 @@ h3 {
   border-bottom: 5px solid #68156f;
   border-top: 5px solid #68156f;
   height: 700px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 15px 0px 20px 0px #68156f;
 }
 
 #musicWrap, #linksWrap {
