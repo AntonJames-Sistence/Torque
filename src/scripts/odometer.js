@@ -4,7 +4,7 @@ class Odometer {
         this.context = context;
 
         const img = new Image();
-        img.src = "resources/stats_bar/odometer.png";
+        img.src = "resources/stats_bar/odometer2.png";
         this.speedImg = img;
 
         this.frame = 0;
@@ -29,7 +29,7 @@ class Odometer {
         };
 
         // game odometer and score render
-        this.context.drawImage(this.speedImg, 0, 270, 220, 220);
+        this.context.drawImage(this.speedImg, 10, 270, 205, 200);
         this.context.drawImage(arrow, 50, 320, 130, 130);
         this.context.fillText(`Score: ${score}`, 30, 460);
         // frame counter

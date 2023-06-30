@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }, false);
     
-//====================================== Get cancas and context =====================================
+//====================================== Get canvas and context =====================================
     
     // get stats canvas
     const statsScreen = document.getElementById('stats');
@@ -285,6 +285,7 @@ pauseMusicBtn.addEventListener(
 
 const linkBtn = document.getElementById("linkedin");
 const githubBtn = document.getElementById("github");
+const wellfoundBtn = document.getElementById("wellfound");
 
 linkBtn.addEventListener(
     'click',
@@ -295,7 +296,13 @@ linkBtn.addEventListener(
 githubBtn.addEventListener(
     'click',
     () => {
-        window.open("https://github.com/AntonJames-Sistence/Torque.git", "_blank");
+        window.open("https://github.com/AntonJames-Sistence/", "_blank");
+    }
+);
+wellfoundBtn.addEventListener(
+    'click',
+    () => {
+        window.open("https://wellfound.com/u/anton-james/", "_blank");
     }
 );
 
@@ -398,7 +405,14 @@ githubBtn.addEventListener(
             finalMessage.style.display = "block";
             finalMessageContainer.style.display = "block";
             let fMes = document.createElement("h3");
-            fMes.textContent = `Thank you for playing! Your score is: ${score}`;
+            fMes.textContent = `Thank you for playing! Your score is: `;
+
+            let scoreSpan = document.createElement("span");
+            scoreSpan.textContent = score;
+            scoreSpan.style.color = "#ebe03c"; 
+            scoreSpan.style.fontFamily = "Signar One";
+
+            fMes.appendChild(scoreSpan);
             finalMessage.appendChild(fMes);
         }
     }
