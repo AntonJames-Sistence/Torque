@@ -286,7 +286,14 @@ pauseMusicBtn.addEventListener(
 const linkBtn = document.getElementById("linkedin");
 const githubBtn = document.getElementById("github");
 const wellfoundBtn = document.getElementById("wellfound");
+const portfolio = document.getElementById("portfolio");
 
+portfolio.addEventListener(
+    'click',
+    () => {
+        window.open("https://antonjames.dev/", "_blank");
+    }
+);
 linkBtn.addEventListener(
     'click',
     () => {

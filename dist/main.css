@@ -157,7 +157,8 @@ button:active {
 #github,
 #playMusic,
 #pauseMusic,
-#wellfound {
+#wellfound,
+#portfolio {
   height: 50px;
   width: 50px;
   background-size: cover;
@@ -170,7 +171,7 @@ button:active {
 
 #wellfound {
   background-image: url("../resources/buttons/angellist.png");
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 #github {
@@ -181,6 +182,11 @@ button:active {
 
 #linkedin {
   background-image: url("../resources/buttons/linkedin.png");
+  margin-top: 10px;
+}
+
+#portfolio {
+  background-image: url("../resources/buttons/portfolio.png");
 }
 
 #playMusic {
@@ -192,7 +198,8 @@ button:active {
 #pauseMusic:hover,
 #github:hover,
 #linkedin:hover,
-#wellfound:hover {
+#wellfound:hover,
+#portfolio:hover {
   background-color: #ebe03c;
 }
 
@@ -242,4 +249,8 @@ h3 {
   font-size: 40px;
   color: #e55c18;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+#car-img {
+  margin-left: 5px;
 }
